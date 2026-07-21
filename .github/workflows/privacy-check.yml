@@ -1,0 +1,24 @@
+name: Privacy check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  reject-private-photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject real-photo formats and private paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          forbidden="$(find . -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.heic' \) -print)"
+          private_paths="$(find . -type f \( -path '*/Kid Picture/*' -o -path '*/.codex-remote-attachments/*' \) -print)"
+          unexpected_assets="$(find books/assets -type f ! -name 'page-*.webp' -print)"
+          if [[ -n "$forbidden$private_paths$unexpected_assets" ]]; then
+            echo 'Privacy check failed. Forbidden files:'
+            printf '%s\n%s\n%s\n' "$forbidden" "$private_paths" "$unexpected_assets"
+            exit 1
+          fi
+          echo 'Privacy check passed: runtime WebP pages only; no real-photo formats.'

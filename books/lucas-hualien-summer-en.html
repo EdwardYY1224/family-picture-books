@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="A warm picture book about Lucas watching the waves at Qixingtan and making little waves with his cousin on a Hualien summer day.">
+  <title>Lucas's Hualien Summer</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="Back to the learning home">← <i>Home</i></a>
+    <div class="book-brand"><b>Lucas's Hualien Summer</b><small>Big sea waves, little splashes, and one blue summer dream</small></div>
+    <div class="book-tools">
+      <a class="pill-button" href="lucas-hualien-summer.html" aria-label="Read in Traditional Chinese">中文</a>
+      <button class="pill-button" id="tipsButton" type="button">☀ <i>Reading tips</i></button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>Sound on</i></button>
+    </div>
+  </header>
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A HUALIEN SUMMER STORY</p>
+        <h1>Lucas's<br>Hualien Summer</h1>
+        <p class="cover-sub">Big sea waves, little splashes, and one blue summer dream</p>
+        <button class="start-button" id="startButton" type="button">Read the story ☀</button>
+      </div>
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="Read this page aloud">🔊</button>
+        <div class="story-copy"><p class="story-en" id="storyText"></p></div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="Previous page">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="Next page">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>Listen to summer with Lucas</h2>
+      <ul>
+        <li><b>Make the sounds:</b> waves go “whoosh,” drops go “drip,” and hands go “pat, pat, pat.”</li>
+        <li><b>Look and find:</b> Can your child point to the big pebble, little pebble, big wave, and little splash?</li>
+        <li><b>Talk about feelings:</b> What does warm sunshine, a sea breeze, or cool water feel like?</li>
+        <li><b>Beach safety:</b> Qixingtan has powerful waves. Watch from a safe distance with a grown-up and stay out of the surf.</li>
+        <li><b>Water safety:</b> A grown-up stays within arm's reach, even when the water is shallow.</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">Back to the story</button>
+    </div>
+  </div>
+  <script src="lucas-hualien-summer-en.js"></script>
+</body>
+</html>

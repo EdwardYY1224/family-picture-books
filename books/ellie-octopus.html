@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="A funny English dream story that helps a four-year-old stop sleeping with the bottle.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='26' rx='22' ry='18' fill='%239b7ed9' stroke='%23244f49' stroke-width='3'/%3E%3Ccircle cx='25' cy='24' r='3' fill='%23244f49'/%3E%3Ccircle cx='39' cy='24' r='3' fill='%23244f49'/%3E%3Cpath d='M14 42q4 8 0 14M24 44q3 8 0 14M34 44q3 8 0 14M44 42q4 8 0 14' fill='none' stroke='%239b7ed9' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>Ellie and the Octopus Mouth｜晚安故事書</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到家庭學習地圖">← <i>學習地圖</i></a>
+    <div class="book-brand">
+      <b>Ellie and the Octopus Mouth</b>
+      <small>艾莉與章魚嘴巴 · 晚安故事</small>
+    </div>
+    <div class="book-tools">
+      <button class="pill-button" id="tipsButton" type="button">♥ 給爸媽</button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>朗讀開</i></button>
+    </div>
+  </header>
+
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A FUNNY DREAM STORY · 英文晚安繪本</p>
+        <h1>Ellie and the<br>Octopus Mouth</h1>
+        <p class="cover-sub">艾莉與章魚嘴巴：含奶瓶睡覺的奇妙一夢</p>
+        <button class="start-button" id="startButton" type="button">翻開故事 ▶</button>
+      </div>
+
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="再聽一次">🔊</button>
+        <div class="story-copy">
+          <p class="story-en" id="storyEn"></p>
+          <p class="story-zh" id="storyZh"></p>
+        </div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>♥ 給爸媽：戒「含奶瓶睡覺」小提示</h2>
+      <ul>
+        <li><b>為什麼要戒</b>：奶留在牙齒上一整晚是「奶瓶性蛀牙」的主因，長期吸吮也會影響嘴型與牙齒排列（故事裡的章魚嘴巴就是這個意思）。</li>
+        <li><b>新流程</b>：睡前 30 分鐘喝完奶 → 刷牙 → 上床；床邊只放白開水。</li>
+        <li><b>給奶瓶一個「睡覺的家」</b>：廚房固定一個位置，每晚讓孩子親自送奶瓶去睡覺、說「Goodnight, bottle! See you at breakfast!」——把戒奶瓶變成孩子自己的任務。</li>
+        <li><b>讀完可以問</b>：「你想要章魚嘴巴嗎？」讓孩子自己說出「不要」，效果比大人說一百次好。</li>
+        <li><b>頭幾晚想念奶瓶很正常</b>：共情（「你有點想念它對嗎？」）、抱抱、唱歌，但溫和堅持不反覆。</li>
+        <li>白天口渴改用杯子喝水；早上記得大力稱讚「奶瓶在廚房睡了一整晚，你做到了！」。</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+
+  <script src="ellie-octopus.js"></script>
+</body>
+</html>

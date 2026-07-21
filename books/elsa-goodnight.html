@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="A gentle English picture book that helps a four-year-old say goodnight to the paci and the bottle.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6l7 15 16 2-12 11 3 16-14-8-14 8 3-16L9 23l16-2z' fill='%23f5c94f' stroke='%23244f49' stroke-width='3'/%3E%3C/svg%3E">
+  <title>Ellie's Big-Kid Magic｜晚安故事書</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到家庭學習地圖">← <i>學習地圖</i></a>
+    <div class="book-brand">
+      <b>Ellie's Big-Kid Magic</b>
+      <small>艾莉的大孩子魔法 · 晚安故事</small>
+    </div>
+    <div class="book-tools">
+      <button class="pill-button" id="tipsButton" type="button">♥ 給爸媽</button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>朗讀開</i></button>
+    </div>
+  </header>
+
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A GOODNIGHT STORY · 英文晚安繪本</p>
+        <h1>Ellie's<br>Big-Kid Magic</h1>
+        <p class="cover-sub">艾莉的大孩子魔法：跟奶嘴和奶瓶說晚安</p>
+        <button class="start-button" id="startButton" type="button">翻開故事 ▶</button>
+      </div>
+
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="再聽一次">🔊</button>
+        <div class="story-copy">
+          <p class="story-en" id="storyEn"></p>
+          <p class="story-zh" id="storyZh"></p>
+        </div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>♥ 給爸媽：戒奶嘴、戒睡前奶瓶小提示</h2>
+      <ul>
+        <li><b>先讀幾晚故事再行動</b>：讓「送奶嘴給星星寶寶」變成孩子自己期待的儀式，而不是被沒收。</li>
+        <li><b>白天先戒、睡前最後戒</b>：先減少白天使用，最後才處理入睡時刻。</li>
+        <li><b>準備替代安撫</b>：固定的小熊或小被、睡前歌、三步驟魔法（深呼吸→抱抱→唱歌），照書裡一起做。</li>
+        <li><b>奶瓶改在睡前 30 分鐘喝完</b>，喝完刷牙；床邊只放白開水，避免奶睡造成蛀牙（奶瓶性齲齒）。</li>
+        <li><b>頭幾晚會哭很正常</b>：陪伴、共情（「你有點想念它，對嗎？」），但溫和堅持，不來回反覆。</li>
+        <li><b>大量具體讚美</b>：早上第一件事稱讚「你用大孩子魔法自己睡著了！」，可搭配貼紙。</li>
+        <li>若牙齒咬合已有明顯改變或超過 5 歲仍戒不掉，可請兒童牙醫一起幫忙。</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+
+  <script src="elsa-goodnight.js"></script>
+</body>
+</html>

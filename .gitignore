@@ -1,0 +1,22 @@
+# Never publish private identity references or raw photos.
+Kid Picture/
+.codex-remote-attachments/
+**/Kid Picture/**
+**/.codex-remote-attachments/**
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.heic
+*.HEIC
+
+# Generated development originals and character-reference sheets are private.
+**/style-reference.png
+**/character-lock*.png
+**/cover-trial*.png
+**/lucas-character-lock*.png
+
+# Local and editor files.
+.DS_Store
+Thumbs.db
+.vscode/

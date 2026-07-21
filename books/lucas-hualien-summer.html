@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="Lucas 在花蓮七星潭看海浪，也和表哥在水盆裡玩出小小海浪的夏日繪本。">
+  <title>Lucas 的花蓮夏天</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到學習首頁">← <i>學習首頁</i></a>
+    <div class="book-brand"><b>Lucas 的花蓮夏天</b><small>大海浪、小水花，一個亮晶晶的夏日</small></div>
+    <div class="book-tools">
+      <a class="pill-button" href="lucas-hualien-summer-en.html" aria-label="Read in English">EN</a>
+      <button class="pill-button" id="tipsButton" type="button">☀ <i>共讀提示</i></button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>聲音開</i></button>
+    </div>
+  </header>
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A HUALIEN SUMMER STORY</p>
+        <h1>Lucas 的<br>花蓮夏天</h1>
+        <p class="cover-sub">大海浪、小水花，還有一個藍藍的夢</p>
+        <button class="start-button" id="startButton" type="button">開始讀故事 ☀</button>
+      </div>
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="朗讀這一頁">🔊</button>
+        <div class="story-copy"><p class="story-en" id="storyZh"></p><p class="story-zh" id="storyEn"></p></div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>和 Lucas 一起聽見夏天</h2>
+      <ul>
+        <li><b>一起模仿聲音：</b>海浪「嘩啦」、水滴「滴答」、拍水「啪、啪、啪」。</li>
+        <li><b>找找看：</b>請孩子指出大石頭、小石頭、大海浪和小水花。</li>
+        <li><b>說說感覺：</b>海風吹起來、太陽曬在身上、涼水碰到腳，會有什麼感覺？</li>
+        <li><b>海邊安全：</b>七星潭浪大，只在大人陪伴下從安全距離看浪，不走進海水。</li>
+        <li><b>玩水安全：</b>即使水很淺，大人也要一直留在孩子伸手可及的地方。</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+  <script src="lucas-hualien-summer.js"></script>
+</body>
+</html>
