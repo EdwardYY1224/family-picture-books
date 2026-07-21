@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="Ellie 在台東都歷海邊尋找螃蟹、寄居蟹與粉紅貝殼，夜裡和家人一起看星星的親子繪本。">
+  <title>Ellie 的台東星星旅行</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到繪本館">← <i>繪本館</i></a>
+    <div class="book-brand"><b>Ellie 的台東星星旅行</b><small>都歷海邊、粉紅貝殼與屋頂上的星光</small></div>
+    <div class="book-tools">
+      <button class="pill-button" id="tipsButton" type="button">☀ <i>親子共讀</i></button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>聲音開</i></button>
+    </div>
+  </header>
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A TAITUNG STARRY STORY</p>
+        <h1>Ellie 的<br>台東星星旅行</h1>
+        <p class="cover-sub">海邊的小發現，和一隻吸飽快樂能量的拖鞋</p>
+        <button class="start-button" id="startButton" type="button">開始閱讀 ✦</button>
+      </div>
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="播放本頁朗讀">🔊</button>
+        <div class="story-copy"><p class="story-en" id="storyZh"></p><p class="story-zh" id="storyEn"></p></div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>和 Ellie 一起聊聊</h2>
+      <ul>
+        <li><b>找一找：</b>Ellie 在都歷海邊遇見了哪些小動物？</li>
+        <li><b>想一想：</b>如果拖鞋也能收藏快樂，你想讓它收藏哪一天？</li>
+        <li><b>溫柔觀察：</b>看看螃蟹和寄居蟹後，要把牠們留在原來的家。</li>
+        <li><b>海邊安全：</b>孩子要和大人同行，留意潮水與海浪。</li>
+        <li><b>屋頂安全：</b>掉到高處的東西交給大人處理，孩子不攀爬。</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+  <script src="ellie-taitung-stars.js"></script>
+</body>
+</html>
