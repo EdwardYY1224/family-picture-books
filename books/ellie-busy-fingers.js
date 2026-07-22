@@ -34,21 +34,23 @@
     pageCount: document.querySelector("#pageCount"),
     pageDots: document.querySelector("#pageDots"),
     soundButton: document.querySelector("#soundButton"),
+    languageButton: document.querySelector("#languageButton"),
     tipsButton: document.querySelector("#tipsButton"),
     tipsOverlay: document.querySelector("#tipsOverlay"),
     tipsClose: document.querySelector("#tipsClose"),
   };
 
-  const state = { index: 0, sound: true, audio: null };
+  const state = { index: 0, sound: true, audio: null, lang: new URLSearchParams(location.search).get("lang") || localStorage.getItem("picture-book-language") || "en" };
 
   function speak(text) {
     if (!state.sound || !text || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    utterance.rate = 0.82;
-    utterance.pitch = 1.05;
-    const voices = window.speechSynthesis.getVoices().filter((voice) => voice.lang.toLowerCase().replace("_", "-").startsWith("en"));
+    utterance.lang = state.lang === "zh" ? "zh-TW" : "en-US";
+    utterance.rate = state.lang === "zh" ? 0.78 : 0.82;
+    utterance.pitch = state.lang === "zh" ? 1.08 : 1.05;
+    const prefix = state.lang === "zh" ? "zh" : "en";
+    const voices = window.speechSynthesis.getVoices().filter((voice) => voice.lang.toLowerCase().replace("_", "-").startsWith(prefix));
     utterance.voice = voices.find((voice) => /natural|online/i.test(voice.name) && voice.lang.toLowerCase().includes("us"))
       || voices.find((voice) => /natural|online|google/i.test(voice.name))
       || voices.find((voice) => voice.lang.toLowerCase().replace("_", "-") === "en-us")
@@ -70,8 +72,9 @@
     els.speakButton.classList.remove("is-speaking");
   }
 
-  const audioSrc = (index) => (window.BOOK_AUDIO && window.BOOK_AUDIO[index])
-    || `audio-busy-fingers/page-${String(index).padStart(2, "0")}.mp3`;
+  const audioSrc = (index) => state.lang === "zh"
+    ? `audio-busy-fingers-zh/page-${String(index).padStart(2, "0")}.mp3`
+    : ((window.BOOK_AUDIO && window.BOOK_AUDIO[index]) || `audio-busy-fingers/page-${String(index).padStart(2, "0")}.mp3`);
 
   function narrate(index) {
     stopNarration();
@@ -86,12 +89,12 @@
     audio.onerror = () => {
       state.audio = null;
       els.speakButton.classList.remove("is-speaking");
-      speak(PAGES[index].en);
+      speak(PAGES[index][state.lang]);
     };
     audio.play().catch(() => {
       state.audio = null;
       els.speakButton.classList.remove("is-speaking");
-      speak(PAGES[index].en);
+      speak(PAGES[index][state.lang]);
     });
   }
 
@@ -131,6 +134,8 @@
     els.textBand.hidden = isCover;
     els.storyEn.textContent = page.en;
     els.storyZh.textContent = page.zh;
+    els.storyEn.hidden = state.lang !== "en";
+    els.storyZh.hidden = state.lang !== "zh";
     els.pageCount.textContent = `${index} / ${PAGES.length - 1}`;
     els.prevButton.disabled = index <= 0;
     els.nextButton.disabled = index >= PAGES.length - 1;
@@ -151,6 +156,15 @@
   els.prevButton.addEventListener("click", () => go(-1));
   els.nextButton.addEventListener("click", () => go(1));
   els.speakButton.addEventListener("click", () => narrate(state.index));
+  els.languageButton.addEventListener("click", () => {
+    state.lang = state.lang === "en" ? "zh" : "en";
+    document.documentElement.lang = state.lang === "zh" ? "zh-Hant" : "en";
+    localStorage.setItem("picture-book-language", state.lang);
+    els.languageButton.textContent = state.lang === "en" ? "中文" : "EN";
+    els.languageButton.setAttribute("aria-label", state.lang === "en" ? "切換成中文" : "Switch to English");
+    render(state.index, true);
+    if (state.index > 0 && state.sound) narrate(state.index);
+  });
   els.soundButton.addEventListener("click", () => {
     state.sound = !state.sound;
     els.soundButton.innerHTML = state.sound ? "🔊 <i>朗讀開</i>" : "🔇 <i>朗讀關</i>";
@@ -167,5 +181,8 @@
   if ("speechSynthesis" in window) window.speechSynthesis.getVoices();
 
   buildDots();
+  els.languageButton.textContent = state.lang === "en" ? "中文" : "EN";
+  els.languageButton.setAttribute("aria-label", state.lang === "en" ? "切換成中文" : "Switch to English");
+  document.documentElement.lang = state.lang === "zh" ? "zh-Hant" : "en";
   render(0, true);
 })();

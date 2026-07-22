@@ -10,7 +10,7 @@
     { zh: "濕濕的沙上，有一點粉紅色。Ellie 撿起來一看——是一個細細長長的漂亮空貝殼！『好像海送給我的小禮物。』", en: "There was a tiny spot of pink in the wet sand. Ellie picked it up and looked closely. It was a beautiful, slender, empty shell! ‘It is like a little present from the sea,’ she said." },
     { zh: "太陽回家以後，大家也回到大屋子。有人說故事，有人吃水果，有人笑得停不下來。Ellie 把小螃蟹的故事，講了一次，又講一次。", en: "After the sun went home, everyone returned to the big house. Some people told stories, some ate fruit, and some could not stop laughing. Ellie told her little crab story once, and then told it all over again." },
     { zh: "夜晚，大家走到屋外。Ellie 抬起頭。一顆、兩顆、三顆……『天空裡有好多亮晶晶的小燈！』", en: "At night, everyone walked outside. Ellie looked up. One star, two stars, three stars… ‘There are so many sparkling little lights in the sky!’" },
-    { zh: "一隻紫色拖鞋滑了一下。咻——它掉到屋頂邊邊，安安靜靜地躺著。爸爸說：『別擔心，明天大人會把它拿回來。』", en: "One purple slipper slipped onto the roof edge. Dad said an adult would safely retrieve it tomorrow." },
+    { zh: "一隻紫色拖鞋滑了一下。咻——它掉到屋頂邊邊，安安靜靜地躺著。爸爸說：『別擔心，明天大人會把它拿回來。』", en: "One purple slipper began to slide. Whoosh! It landed quietly on the edge of the roof. Dad said, ‘Do not worry. An adult will safely bring it back tomorrow.’" },
     { zh: "Ellie 睡著以後，小拖鞋獨自在屋頂看星星。星光一點一點落下來，落在鞋尖，落在鞋面。小拖鞋吸飽了亮晶晶的快樂能量。", en: "After Ellie fell asleep, the little slipper watched the stars alone from the roof. Starlight drifted down, bit by bit—onto its toe and across its top. The little slipper filled itself with sparkling, happy energy." },
     { zh: "隔天，大人把拖鞋安全地拿回來。Ellie 穿上它，覺得腳底暖暖的。原來海邊的風、大屋子的笑聲和滿天星光，都跟著 Ellie 回家了。", en: "The next day, an adult safely brought the slipper back. Ellie put it on and felt a gentle warmth beneath her feet. The sea breeze, the laughter in the big house, and the sky full of stars had all come home with Ellie." },
   ];
@@ -21,10 +21,11 @@
     speakButton: document.querySelector("#speakButton"), prevButton: document.querySelector("#prevButton"),
     nextButton: document.querySelector("#nextButton"), pageCount: document.querySelector("#pageCount"),
     pageDots: document.querySelector("#pageDots"), soundButton: document.querySelector("#soundButton"),
+    languageButton: document.querySelector("#languageButton"),
     tipsButton: document.querySelector("#tipsButton"), tipsOverlay: document.querySelector("#tipsOverlay"),
     tipsClose: document.querySelector("#tipsClose"),
   };
-  const state = { index: 0, sound: true, audio: null };
+  const state = { index: 0, sound: true, audio: null, lang: new URLSearchParams(location.search).get("lang") || localStorage.getItem("picture-book-language") || "en" };
   const pageId = (index) => String(index).padStart(2, "0");
   const illustrationSrc = (index) => `assets/ellie-taitung-stars-warm-folk/page-${pageId(index)}.webp`;
   function stopNarration() {
@@ -35,11 +36,12 @@
   function speakFallback(index) {
     stopNarration();
     if (!state.sound || !("speechSynthesis" in window)) return;
-    const utterance = new SpeechSynthesisUtterance(PAGES[index].en);
-    utterance.lang = "en-US"; utterance.rate = 0.82; utterance.pitch = 1.05;
+    const utterance = new SpeechSynthesisUtterance(PAGES[index][state.lang]);
+    utterance.lang = state.lang === "zh" ? "zh-TW" : "en-US";
+    utterance.rate = state.lang === "zh" ? 0.78 : 0.82; utterance.pitch = state.lang === "zh" ? 1.08 : 1.05;
     const voices = window.speechSynthesis.getVoices();
-    utterance.voice = voices.find((voice) => voice.lang.toLowerCase().replace("_", "-").startsWith("en-us"))
-      || voices.find((voice) => voice.lang.toLowerCase().startsWith("en")) || null;
+    const prefix = state.lang === "zh" ? "zh" : "en";
+    utterance.voice = voices.find((voice) => voice.lang.toLowerCase().replace("_", "-").startsWith(prefix)) || null;
     utterance.onstart = () => els.speakButton.classList.add("is-speaking");
     utterance.onend = utterance.onerror = () => els.speakButton.classList.remove("is-speaking");
     window.speechSynthesis.speak(utterance);
@@ -47,7 +49,8 @@
   function narrate(index) {
     stopNarration();
     if (!state.sound) return;
-    const audio = new Audio(`audio-ellie-taitung/page-${pageId(index)}.mp3`);
+    const folder = state.lang === "zh" ? "audio-ellie-taitung-zh" : "audio-ellie-taitung";
+    const audio = new Audio(`${folder}/page-${pageId(index)}.mp3`);
     state.audio = audio; els.speakButton.classList.add("is-speaking");
     audio.onended = () => { state.audio = null; els.speakButton.classList.remove("is-speaking"); };
     audio.onerror = () => { state.audio = null; els.speakButton.classList.remove("is-speaking"); speakFallback(index); };
@@ -64,6 +67,7 @@
     state.index = index; renderIllustration(index);
     const isCover = index === 0; els.coverOverlay.hidden = !isCover; els.textBand.hidden = isCover;
     els.storyZh.textContent = PAGES[index].zh; els.storyEn.textContent = PAGES[index].en;
+    els.storyZh.hidden = state.lang !== "zh"; els.storyEn.hidden = state.lang !== "en";
     els.pageCount.textContent = `${index} / ${PAGES.length - 1}`;
     els.prevButton.disabled = index <= 0; els.nextButton.disabled = index >= PAGES.length - 1;
     [...els.pageDots.children].forEach((dot, i) => { dot.classList.toggle("current", i === index); dot.classList.toggle("done", i < index); });
@@ -72,8 +76,21 @@
   function go(delta) { const next = Math.min(PAGES.length - 1, Math.max(0, state.index + delta)); if (next !== state.index) render(next); }
   els.startButton.addEventListener("click", () => render(1)); els.prevButton.addEventListener("click", () => go(-1)); els.nextButton.addEventListener("click", () => go(1));
   els.speakButton.addEventListener("click", () => narrate(state.index));
+  els.languageButton.addEventListener("click", () => {
+    state.lang = state.lang === "en" ? "zh" : "en";
+    document.documentElement.lang = state.lang === "zh" ? "zh-Hant" : "en";
+    localStorage.setItem("picture-book-language", state.lang);
+    els.languageButton.textContent = state.lang === "en" ? "中文" : "EN";
+    els.languageButton.setAttribute("aria-label", state.lang === "en" ? "切換成中文" : "Switch to English");
+    render(state.index, true);
+    if (state.index > 0 && state.sound) narrate(state.index);
+  });
   els.soundButton.addEventListener("click", () => { state.sound = !state.sound; els.soundButton.innerHTML = state.sound ? "🔊 <i>聲音開</i>" : "🔇 <i>聲音關</i>"; els.soundButton.setAttribute("aria-pressed", String(state.sound)); if (!state.sound) stopNarration(); });
   els.tipsButton.addEventListener("click", () => { els.tipsOverlay.hidden = false; }); els.tipsClose.addEventListener("click", () => { els.tipsOverlay.hidden = true; });
   document.addEventListener("keydown", (event) => { if (event.key === "ArrowRight") go(1); if (event.key === "ArrowLeft") go(-1); });
-  window.addEventListener("pagehide", stopNarration); if ("speechSynthesis" in window) window.speechSynthesis.getVoices(); buildDots(); render(0, true);
+  window.addEventListener("pagehide", stopNarration); if ("speechSynthesis" in window) window.speechSynthesis.getVoices(); buildDots();
+  els.languageButton.textContent = state.lang === "en" ? "中文" : "EN";
+  els.languageButton.setAttribute("aria-label", state.lang === "en" ? "切換成中文" : "Switch to English");
+  document.documentElement.lang = state.lang === "zh" ? "zh-Hant" : "en";
+  render(0, true);
 })();
