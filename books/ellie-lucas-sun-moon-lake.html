@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <link rel="icon" href="data:,">
+  <meta name="description" content="Ellie 和 Lucas 第一次與爸爸、媽媽、阿嬤入住日月潭伊達邵溫泉飯店的雙語家庭繪本。">
+  <title>Ellie 和 Lucas 的日月潭飯店大冒險</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到繪本館">← <i>繪本館</i></a>
+    <div class="book-brand"><b>日月潭飯店大冒險</b><small>Ellie、Lucas 和阿嬤的第一次飯店旅行</small></div>
+    <div class="book-tools">
+      <button class="pill-button" id="languageButton" type="button" aria-label="Switch to English">EN</button>
+      <button class="pill-button" id="tipsButton" type="button">☀ <i>親子共讀</i></button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>聲音開</i></button>
+    </div>
+  </header>
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A SUN MOON LAKE FAMILY STORY</p>
+        <h1>Ellie 和 Lucas 的<br>日月潭飯店大冒險</h1>
+        <p class="cover-sub">泳池、電動車、溫泉，還有一家人的大笑聲</p>
+        <button class="start-button" id="startButton" type="button">開始閱讀 ✦</button>
+      </div>
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="播放本頁朗讀">🔊</button>
+        <div class="story-copy"><p class="story-en" id="storyZh"></p><p class="story-zh" id="storyEn"></p></div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>和 Ellie、Lucas 一起聊聊</h2>
+      <ul>
+        <li><b>第一次：</b>你第一次住飯店時，最想先做什麼？</li>
+        <li><b>再試一次：</b>Ellie 怎麼從不太會開，慢慢變厲害？</li>
+        <li><b>水域安全：</b>泳池與浴池都要有大人在伸手可及的地方陪伴。</li>
+        <li><b>溫度安全：</b>泡湯時間與水溫由大人確認；覺得冷、熱或不舒服要立刻說。</li>
+        <li><b>記憶：</b>這趟旅行中，哪一個笑聲最讓你記得？</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+  <script src="ellie-lucas-sun-moon-lake.js"></script>
+</body>
+</html>
