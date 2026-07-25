@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">Four-year-old bilingual games</title>
+  <desc id="desc">A warm playful scene with shapes, numbers, a traffic light, and recycling bins.</desc>
+  <rect width="900" height="600" rx="36" fill="#fff5dd"/>
+  <path d="M0 430C170 375 295 500 470 440s260-70 430 12v148H0Z" fill="#b8d6cd"/>
+  <circle cx="170" cy="155" r="82" fill="#f4bd49"/>
+  <path d="M425 105 525 275H325Z" fill="#df745e"/>
+  <rect x="620" y="90" width="118" height="215" rx="48" fill="#244f49"/>
+  <circle cx="679" cy="137" r="27" fill="#e76f61"/>
+  <circle cx="679" cy="198" r="27" fill="#f2c653"/>
+  <circle cx="679" cy="259" r="27" fill="#79b88d"/>
+  <rect x="130" y="350" width="170" height="145" rx="22" fill="#4f94a6"/>
+  <path d="M170 350v-38h90v38M190 399h50M190 438h50" fill="none" stroke="#fff5dd" stroke-width="18" stroke-linecap="round"/>
+  <rect x="350" y="350" width="170" height="145" rx="22" fill="#d89a45"/>
+  <path d="m405 446 60-60m-60 0 60 60" stroke="#fff5dd" stroke-width="18" stroke-linecap="round"/>
+  <path d="M600 390c56-60 131-40 145 13 12 48-36 94-111 80-61-11-73-52-34-93Z" fill="#785f92"/>
+  <circle cx="628" cy="421" r="10" fill="#fff5dd"/>
+  <circle cx="703" cy="421" r="10" fill="#fff5dd"/>
+  <path d="M642 454c18 14 34 14 50 0" fill="none" stroke="#fff5dd" stroke-width="10" stroke-linecap="round"/>
+</svg>
