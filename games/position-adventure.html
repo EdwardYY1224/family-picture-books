@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="給 4 歲孩子的位置詞拖曳遊戲，含兩步驟進階任務。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f1ca64'/%3E%3Cpath d='M18 35c7 10 21 10 28 0' fill='none' stroke='%23274f49' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='25' r='3' fill='%23274f49'/%3E%3Ccircle cx='41' cy='25' r='3' fill='%23274f49'/%3E%3C/svg%3E">
+  <title>位置探險｜小小探索家</title>
+  <link rel="stylesheet" href="position-adventure.css">
+</head>
+<body>
+  <header class="game-header">
+    <a class="back-link" id="backLink" href="index.html" aria-label="回到遊戲館">
+      <span aria-hidden="true">←</span><i id="backLabel">遊戲館</i>
+    </a>
+    <div class="game-brand">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <div><b id="brandName">位置探險</b><small id="brandTag">幫小鳥找到對的位置</small></div>
+    </div>
+    <div class="header-tools">
+      <button class="sound-button lang-button" id="langButton" type="button" aria-label="Switch language">EN</button>
+      <button class="sound-button" id="soundButton" type="button" aria-pressed="true">
+        <span aria-hidden="true">🔊</span><span class="sound-label">語音開啟</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="game-shell">
+    <section class="mission-panel" aria-labelledby="missionText">
+      <div class="round-counter">
+        <span id="roundLabel">準備出發</span>
+        <div class="round-dots" id="roundDots" aria-label="遊戲進度"></div>
+      </div>
+      <div class="mission-copy">
+        <span class="mission-icon" aria-hidden="true">👂</span>
+        <div>
+          <p id="missionEyebrow">聽一聽，拖一拖</p>
+          <h1 id="missionText">準備好幫小鳥找位置了嗎？</h1>
+        </div>
+      </div>
+      <div class="mission-actions">
+        <button class="round-button" id="replayButton" type="button" disabled><span aria-hidden="true">↻</span> <i id="replayLabel">再聽一次</i></button>
+        <button class="round-button" id="hintButton" type="button" disabled><span aria-hidden="true">☀</span> <i id="hintLabel">給我提示</i></button>
+      </div>
+    </section>
+
+    <section class="playground" id="playground" aria-label="位置詞遊戲場景">
+      <div class="paper-grain" aria-hidden="true"></div>
+      <div class="doodle doodle--star" aria-hidden="true">★</div>
+      <div class="doodle doodle--squiggle" aria-hidden="true">⌁</div>
+      <p class="guide-message" id="guideBubble">用手指拖動小鳥吧！</p>
+
+      <div class="drop-zone" data-zone="inside" aria-label="公車裡面"></div>
+      <div class="drop-zone" data-zone="above" aria-label="路燈上面"></div>
+      <div class="drop-zone" data-zone="below" aria-label="長椅下面"></div>
+      <div class="drop-zone" data-zone="beside" aria-label="郵筒旁邊"></div>
+      <div class="drop-zone" data-zone="outside" aria-label="公園圍欄外面"></div>
+
+      <div class="landmark landmark--bus" aria-hidden="true">
+        <span class="bus-window bus-window--one"></span>
+        <span class="bus-window bus-window--two"></span>
+        <span class="bus-door"></span>
+        <i class="bus-wheel bus-wheel--one"></i><i class="bus-wheel bus-wheel--two"></i>
+      </div>
+      <div class="landmark landmark--lamp" aria-hidden="true"><span></span><i></i><b></b></div>
+      <div class="landmark landmark--bench" aria-hidden="true"><span></span><i></i><b></b></div>
+      <div class="landmark landmark--postbox" aria-hidden="true"><span></span><i></i></div>
+      <div class="landmark landmark--fence" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <button class="bird" id="bird" type="button" aria-label="可以拖曳的小鳥">
+        <svg viewBox="0 0 132 104" role="img" aria-hidden="true">
+          <path class="bird-tail" d="M26 54 3 35l28 3L14 15l34 21Z"/>
+          <ellipse class="bird-body" cx="69" cy="58" rx="46" ry="34"/>
+          <path class="bird-wing" d="M65 55c-3 25-23 29-35 9 12-19 28-25 35-9Z"/>
+          <circle class="bird-head" cx="94" cy="39" r="27"/>
+          <path class="bird-beak" d="m116 38 15 8-16 6Z"/>
+          <circle class="bird-eye" cx="101" cy="34" r="4"/>
+          <path class="bird-leg" d="M58 86v10m-7 0h14M82 88v9m-7 0h14"/>
+        </svg>
+        <span class="drag-ring" aria-hidden="true"></span>
+      </button>
+
+      <div class="feedback-card" id="feedbackCard" role="status" aria-live="polite" hidden>
+        <span class="feedback-symbol" aria-hidden="true">✦</span>
+        <div><b id="feedbackTitle"></b><p id="feedbackText"></p></div>
+        <button id="nextButton" type="button">下一題 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <p class="parent-note" id="parentNote"><span aria-hidden="true">♥</span> 大人小提醒：讓孩子自己拖曳；答錯時先等一下，再使用提示。</p>
+  </main>
+
+  <div class="start-screen" id="startScreen" role="dialog" aria-modal="true" aria-labelledby="startTitle">
+    <div class="start-card">
+      <div class="start-art" aria-hidden="true">
+        <span class="start-bird">●</span><span class="start-box">▭</span><span class="start-star">✦</span>
+      </div>
+      <p class="card-kicker" id="startKicker">9 QUESTION ADVENTURE</p>
+      <h2 id="startTitle">位置探險</h2>
+      <p id="startText">每一題只看一個城市地標，<br>用手指把小鳥拖到對的位置。</p>
+      <ul id="startList"></ul>
+      <button class="primary-button" id="startGameButton" type="button">開始探險 <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+
+  <div class="finish-screen" id="finishScreen" role="dialog" aria-modal="true" aria-labelledby="finishTitle" hidden>
+    <div class="finish-card">
+      <div class="celebration" aria-hidden="true">✦　✿　★</div>
+      <p class="card-kicker" id="finishKicker">ADVENTURE COMPLETE</p>
+      <h2 id="finishTitle">探險完成！</h2>
+      <p id="finishMessage">你幫小鳥找到了好多位置。</p>
+      <div class="session-summary">
+        <div><strong id="correctCount">0</strong><span id="correctLabel">完成題數</span></div>
+        <div><strong id="hintCount">0</strong><span id="hintStatLabel">使用提示</span></div>
+      </div>
+      <p class="finish-note" id="finishNote">這次練習已記為「探索中」。是否能在生活中自然使用位置詞，再由大人觀察。</p>
+      <div class="finish-actions">
+        <button class="primary-button" id="playAgainButton" type="button">再玩一次</button>
+        <a class="secondary-link" id="backHomeLink" href="index.html">回遊戲館</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="position-adventure.js"></script>
+</body>
+</html>
