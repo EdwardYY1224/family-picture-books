@@ -162,6 +162,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid rgba(57,132,198,.35);
 
 /* ---- start overlay: resume ---- */
 #resumeGame { display: block; margin: 0 auto 10px; }
+#resumeGame[hidden] { display: none; }
 #startGame.secondary-start { background: #fff; color: var(--green); border: 3px solid var(--green); box-shadow: 0 5px 0 rgba(36,79,73,.25); font-size: 14px; min-height: 50px; }
 
 /* ---- drag refinements ---- */
