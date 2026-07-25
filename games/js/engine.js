@@ -79,6 +79,11 @@
     window.speechSynthesis.speak(utterance);
   }
 
+  function labelThen(label, message) {
+    const separator = i18n.lang === "en" ? ". " : "。";
+    return label ? `${label}${separator}${message}` : message;
+  }
+
   function audioContext() {
     if (!state.audioContext) state.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     if (state.audioContext.state === "suspended") state.audioContext.resume();
@@ -187,7 +192,8 @@
       button.append(label);
       button.addEventListener("click", () => {
         if (state.solved) return;
-        if (choice.value === part.answer) partCorrect(); else incorrect(button);
+        const spokenLabel = t(choice.label);
+        if (choice.value === part.answer) partCorrect(false, spokenLabel); else incorrect(button, spokenLabel);
       });
       grid.append(button);
     });
@@ -249,7 +255,7 @@
       const generous = Math.min(elements.gameStage.clientWidth, elements.gameStage.clientHeight) * 0.31;
       if (nearest && nearest.target.dataset.value === part.answer && nearest.distance < generous) {
         nearest.target.classList.add("is-correct");
-        partCorrect();
+        partCorrect(false, t(part.source.label));
       } else {
         token.classList.add("is-wrong");
         window.setTimeout(() => { token.classList.remove("is-wrong"); token.style.transform = ""; }, 330);
@@ -323,15 +329,19 @@
       button.addEventListener("click", () => {
         if (state.solved) return;
         const expected = part.steps[state.sequenceIndex];
-        if (!expected || step.value !== expected.value) { incorrect(button); return; }
+        const spokenLabel = t(step.label);
+        if (!expected || step.value !== expected.value) { incorrect(button, spokenLabel); return; }
         const slot = slots.children[state.sequenceIndex];
         slot.replaceChildren(createVisual(step, "icon-svg icon-svg--slot"));
         slot.classList.add("filled");
         button.disabled = true;
         state.sequenceIndex += 1;
         playTone(560 + state.sequenceIndex * 60, 0.12, "sine", 0);
-        if (state.sequenceIndex === part.steps.length) partCorrect();
-        else elements.stageGuide.textContent = ui.sequenceNext(state.sequenceIndex + 1);
+        if (state.sequenceIndex === part.steps.length) partCorrect(false, spokenLabel);
+        else {
+          elements.stageGuide.textContent = ui.sequenceNext(state.sequenceIndex + 1);
+          speak(spokenLabel);
+        }
       });
       cards.append(button);
     });
@@ -453,7 +463,7 @@
     speak(ui.stageIntro[stage]);
   }
 
-  function incorrect(element) {
+  function incorrect(element, spokenLabel = "") {
     if (state.solved) return;
     state.attempts += 1;
     elements.stageGuide.textContent = ui.tryAgain;
@@ -461,8 +471,8 @@
       element.classList.add("is-wrong");
       window.setTimeout(() => element.classList.remove("is-wrong"), 330);
     }
-    speak(ui.tryAgain);
-    if (state.attempts >= 2) window.setTimeout(showHint, 460);
+    speak(labelThen(spokenLabel, ui.tryAgain));
+    if (state.attempts >= 2) window.setTimeout(showHint, spokenLabel ? 1500 : 460);
   }
 
   function showHint() {
@@ -487,7 +497,7 @@
     return line;
   }
 
-  function partCorrect(quiet) {
+  function partCorrect(quiet, spokenLabel = "") {
     if (state.solved) return;
     state.solved = true;
     const round = currentRound();
@@ -499,7 +509,7 @@
       if (!quiet) {
         playEffect("success");
         elements.stageGuide.textContent = part.confirm ? t(part.confirm) : ui.partDone;
-        speak(part.confirm ? t(part.confirm) : ui.partDone);
+        speak(labelThen(spokenLabel, part.confirm ? t(part.confirm) : ui.partDone));
       }
       window.setTimeout(() => {
         state.partIndex += 1;
@@ -519,7 +529,7 @@
     elements.feedbackPanel.hidden = false;
     updateDots();
     saveResume(state.roundIndex + 1);
-    speak(`${praise()}${message}`);
+    speak(labelThen(spokenLabel, `${praise()}${message}`));
   }
 
   /* ---------- resume & progress ---------- */
