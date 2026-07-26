@@ -106,8 +106,17 @@
     oscillator.stop(start + duration + 0.03);
   }
 
-  const EFFECT_LENGTH = { horn: 0.85, siren: 1.15, bark: 0.45, bell: 0.6, train: 0.95, success: 0.5 };
-  function playEffect(name, delay) {
+  const RECORDED_EFFECTS = {
+    horn: { file: "audio/bus-horn-source.ogg", start: 0, duration: 1.55, volume: 0.62 },
+    siren: { file: "audio/ambulance-siren-source.ogg", start: 0.25, duration: 1.9, volume: 0.52 },
+    bark: { file: "audio/dog-bark-source.ogg", start: 0, duration: 0.32, volume: 0.9, repeat: 2, gap: 0.18 },
+    bell: { file: "audio/bike-bell-source.wav", start: 0, duration: 1.35, volume: 1 },
+    train: { file: "audio/train-horn-source.ogg", start: 0, duration: 1.85, volume: 0.64 },
+  };
+  const EFFECT_LENGTH = { horn: 1.55, siren: 1.9, bark: 0.82, bell: 1.35, train: 1.85, success: 0.5 };
+  const effectBuffers = new Map();
+
+  function synthesizedEffect(name, delay) {
     if (!state.sound) return;
     const at = delay || 0;
     if (name === "horn") { playTone(185, 0.38, "square", at); playTone(150, 0.38, "square", at + 0.4); }
@@ -116,6 +125,44 @@
     if (name === "bell") { playTone(980, 0.5, "sine", at); playTone(1480, 0.35, "sine", at + 0.05); }
     if (name === "train") { playTone(120, 0.8, "square", at); playTone(100, 0.7, "square", at + 0.18); }
     if (name === "success") { playTone(620, 0.16, "sine", at); playTone(830, 0.16, "sine", at + 0.14); playTone(1040, 0.24, "sine", at + 0.28); }
+  }
+
+  function loadEffectBuffer(name) {
+    if (effectBuffers.has(name)) return effectBuffers.get(name);
+    const config = RECORDED_EFFECTS[name];
+    const promise = fetch(config.file)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Audio ${response.status}: ${config.file}`);
+        return response.arrayBuffer();
+      })
+      .then((bytes) => audioContext().decodeAudioData(bytes));
+    effectBuffers.set(name, promise);
+    promise.catch(() => effectBuffers.delete(name));
+    return promise;
+  }
+
+  function playRecordedEffect(name, delay) {
+    const config = RECORDED_EFFECTS[name];
+    const at = delay || 0;
+    loadEffectBuffer(name).then((buffer) => {
+      if (!state.sound) return;
+      const context = audioContext();
+      const repeats = config.repeat || 1;
+      for (let index = 0; index < repeats; index += 1) {
+        const source = context.createBufferSource();
+        const gain = context.createGain();
+        source.buffer = buffer;
+        gain.gain.value = config.volume;
+        source.connect(gain).connect(context.destination);
+        source.start(context.currentTime + at + index * (config.duration + (config.gap || 0)), config.start, config.duration);
+      }
+    }).catch(() => synthesizedEffect(name, at));
+  }
+
+  function playEffect(name, delay) {
+    if (!state.sound) return;
+    if (RECORDED_EFFECTS[name]) playRecordedEffect(name, delay);
+    else synthesizedEffect(name, delay);
   }
 
   function playSoundSequence(names, onDone) {
