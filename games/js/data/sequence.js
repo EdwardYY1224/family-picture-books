@@ -3,7 +3,7 @@
   "use strict";
   window.KidGameData = window.KidGameData || {};
 
-  const step = (value, icon, zh, en) => ({ value, icon, label: { zh, en } });
+  const step = (value, icon, zh, en, scene) => ({ value, icon, scene, label: { zh, en } });
 
   function seqRound(stage, prompt, confirm, steps, hint) {
     return {
@@ -31,10 +31,10 @@
         { zh: "早上出門前，照順序點一點。", en: "Getting ready in the morning — tap in order." },
         { zh: "早晨順序完成了！", en: "Morning routine done!" },
         [
-          step("wake", "bed", "起床", "Wake up"),
-          step("brush", "toothbrush", "刷牙", "Brush teeth"),
-          step("eat", "bowl", "吃早餐", "Eat breakfast"),
-          step("leave", "backpack", "出門", "Go out"),
+          step("wake", "bed", "起床", "Wake up", "sequence-wake"),
+          step("brush", "toothbrush", "刷牙", "Brush teeth", "sequence-brush"),
+          step("eat", "bowl", "吃早餐", "Eat breakfast", "sequence-eat"),
+          step("leave", "backpack", "出門", "Go out", "sequence-leave"),
         ]),
       seqRound(0,
         { zh: "過馬路時，照安全順序點一點。", en: "Crossing the street — tap the safe steps in order." },

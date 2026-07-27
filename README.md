@@ -1,7 +1,12 @@
-# Family Picture Books
+# Family Picture Books and Learning Games
 
-A single static website containing the family's finished picture-book readers.
-GitHub Pages serves the site directly from the repository root.
+A single static website with three child-facing entrances: Pony English-class
+practice, the family's finished picture-book readers, and age-four ability
+games. GitHub Pages serves the site directly from the repository root.
+
+The school games in `school/` are derived from parent-provided lesson recordings.
+Only cleaned learning targets and runtime prompts are published; the source
+recordings and raw machine transcript remain local.
 
 ## Privacy rule
 

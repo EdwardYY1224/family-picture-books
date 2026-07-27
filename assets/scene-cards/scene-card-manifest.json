@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "styleReference": "D:/AI_Kid_Education/books/assets/elsa-warm-folk/style-reference.png",
+  "incomingDirectory": "assets/scene-cards/incoming",
+  "runtimeDirectory": "assets/scene-cards",
+  "defaults": { "square": "1536x1536", "landscape": "1800x1200", "runtime": "768px WebP quality 86" },
+  "batches": [
+    {
+      "id": "accepted-examples",
+      "title": "Already approved and integrated",
+      "assets": [
+        { "file": "see.webp", "ratio": "1:1", "status": "ready", "scene": "Cocoa owl using blue-and-brass binoculars to look at a coral butterfly." },
+        { "file": "hear.webp", "ratio": "1:1", "status": "ready", "scene": "Warm ivory rabbit turning one ear toward a small muted-teal singing bird." },
+        { "file": "smell.webp", "ratio": "1:1", "status": "ready", "scene": "Caramel curly plush toy dog gently smelling one coral flower." },
+        { "file": "eat.webp", "ratio": "1:1", "status": "ready", "scene": "Cocoa bear eating warm porridge with a spoon." },
+        { "file": "bite.webp", "ratio": "1:1", "status": "ready", "scene": "Friendly squirrel taking one clear bite from a red apple." },
+        { "file": "draw.webp", "ratio": "1:1", "status": "ready", "scene": "Muted-teal mouse drawing a simple sun with a coral crayon." },
+        { "file": "dance.webp", "ratio": "1:1", "status": "ready", "scene": "Mustard fox dancing joyfully with a powder-blue scarf." },
+        { "file": "sequence-wake.webp", "ratio": "1:1", "status": "ready", "scene": "Cozy child bed at sunrise, blanket turned back and slippers waiting." },
+        { "file": "sequence-brush.webp", "ratio": "1:1", "status": "ready", "scene": "Toothbrush with gentle bubbles beside a blue cup at a sink." },
+        { "file": "sequence-eat.webp", "ratio": "1:1", "status": "ready", "scene": "Breakfast bowl of oatmeal with banana, spoon and muted-teal cup." },
+        { "file": "sequence-leave.webp", "ratio": "1:1", "status": "ready", "scene": "Open teal front door with coral backpack and ivory shoes ready to go." }
+      ]
+    },
+    {
+      "id": "school-entry",
+      "title": "School-English entrance and lesson tiles",
+      "assets": [
+        { "file": "school-hero-room.webp", "ratio": "3:2", "status": "needed", "scene": "Inviting little English-learning room with picture cards, headphones and a cozy reading chair; no child and no written alphabet." },
+        { "file": "school-tile-body.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly bear pointing to its nose while a rabbit points to one ear, clear body-part listening game." },
+        { "file": "school-tile-count.webp", "ratio": "1:1", "status": "needed", "scene": "Two friendly hands with ten clearly separated fingers beside two bright counting stones, no numerals." },
+        { "file": "school-tile-letters.webp", "ratio": "1:1", "status": "needed", "scene": "Whimsical toy train carrying an umbrella, violin and little wagon; no written letters." },
+        { "file": "school-tile-home.webp", "ratio": "1:1", "status": "needed", "scene": "Cozy school doorway at afternoon pickup with backpack, jacket and a friendly waving adult hand, no identifiable child." }
+      ]
+    },
+    {
+      "id": "school-body",
+      "title": "Body-part answer cards",
+      "assets": [
+        { "file": "body-eyes.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly animal face with both eyes open and clearly emphasized by a gentle powder-blue framing shape." },
+        { "file": "body-ears.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly rabbit showing two long ears, three-quarter view, ears visually dominant." },
+        { "file": "body-nose.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly bear face in profile with one rounded nose clearly emphasized." },
+        { "file": "body-mouth.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly animal smiling with one normal closed mouth clearly visible, no teeth emphasis." },
+        { "file": "body-teeth.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly crocodile giving a gentle smile with a small row of clean rounded teeth, cute and not scary." },
+        { "file": "body-hands.webp", "ratio": "1:1", "status": "needed", "scene": "Two preschool hands waving, anatomically correct with five fingers on each hand." },
+        { "file": "body-feet.webp", "ratio": "1:1", "status": "needed", "scene": "Two socked preschool feet beside a pair of ivory slippers." },
+        { "file": "body-shoulders.webp", "ratio": "1:1", "status": "needed", "scene": "Back view of a friendly bear wearing a plain mustard shirt, both shoulders clearly indicated by two soft coral dots." },
+        { "file": "body-knees.webp", "ratio": "1:1", "status": "needed", "scene": "Seated teddy bear with both knees bent and clearly visible, simple plain shorts." }
+      ]
+    },
+    {
+      "id": "school-count-prompts",
+      "title": "Body counting prompt scenes; answer numerals remain HTML",
+      "assets": [
+        { "file": "school-count-one-nose.webp", "ratio": "1:1", "status": "needed", "scene": "One friendly animal face with a single clearly visible nose." },
+        { "file": "school-count-two-eyes.webp", "ratio": "1:1", "status": "needed", "scene": "One friendly animal face with exactly two open eyes." },
+        { "file": "school-count-two-ears.webp", "ratio": "1:1", "status": "needed", "scene": "One friendly rabbit with exactly two clearly visible ears." },
+        { "file": "school-count-two-shoulders.webp", "ratio": "1:1", "status": "needed", "scene": "Plain-shirted teddy from the back with exactly two shoulders clearly visible." },
+        { "file": "school-count-ten-fingers.webp", "ratio": "1:1", "status": "needed", "scene": "Two open preschool hands showing exactly ten anatomically correct fingers." },
+        { "file": "school-count-ten-toes.webp", "ratio": "1:1", "status": "needed", "scene": "Two clean preschool bare feet showing exactly ten anatomically correct toes, non-clinical and cozy." }
+      ]
+    },
+    {
+      "id": "school-letters",
+      "title": "Letter-object scenes; letters remain HTML overlays",
+      "assets": [
+        { "file": "letter-u-umbrella.webp", "ratio": "1:1", "status": "needed", "scene": "One mustard-and-coral umbrella open in a tiny gentle rain puddle." },
+        { "file": "letter-v-violin.webp", "ratio": "1:1", "status": "needed", "scene": "One child-sized cocoa violin with bow resting on a cream cloth." },
+        { "file": "letter-w-wagon.webp", "ratio": "1:1", "status": "needed", "scene": "One coral wooden pull wagon carrying a teddy bear." },
+        { "file": "letter-x-xray.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly toy doctor's powder-blue X-ray lightbox showing a simple forearm bone silhouette, safe and non-clinical." },
+        { "file": "letter-y-yarn.webp", "ratio": "1:1", "status": "needed", "scene": "One mustard ball of yarn with a short loose curl and two knitting needles." },
+        { "file": "letter-z-zipper.webp", "ratio": "1:1", "status": "needed", "scene": "Close-up of a coral child's jacket with one large easy-to-see teal zipper, no logo." }
+      ]
+    },
+    {
+      "id": "school-home-dialogue",
+      "title": "After-school dialogue and object cards",
+      "assets": [
+        { "file": "home-morning.webp", "ratio": "1:1", "status": "needed", "scene": "Warm sunrise over a small breakfast table and open curtains." },
+        { "file": "home-afternoon.webp", "ratio": "1:1", "status": "needed", "scene": "Golden afternoon sun above a school doorway with one waving hand." },
+        { "file": "home-night.webp", "ratio": "1:1", "status": "needed", "scene": "Quiet crescent moon and one star above a cozy sleeping house." },
+        { "file": "home-fine.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly otter smiling calmly with one paw on its chest, feeling fine." },
+        { "file": "home-backpack.webp", "ratio": "1:1", "status": "needed", "scene": "One coral preschool backpack with simple teal pocket, no logo." },
+        { "file": "home-book.webp", "ratio": "1:1", "status": "needed", "scene": "One open wordless picture book showing a sun and flower illustration." },
+        { "file": "home-ball.webp", "ratio": "1:1", "status": "needed", "scene": "One soft powder-blue and mustard play ball." },
+        { "file": "home-jacket.webp", "ratio": "1:1", "status": "needed", "scene": "One plain coral child jacket hanging on a rounded hook, no logo." },
+        { "file": "home-shoes.webp", "ratio": "1:1", "status": "needed", "scene": "One pair of warm-ivory child sneakers neatly side by side, no logo." },
+        { "file": "home-umbrella.webp", "ratio": "1:1", "status": "needed", "scene": "One closed mustard umbrella leaning beside a teal doorway." },
+        { "file": "home-yes.webp", "ratio": "1:1", "status": "needed", "scene": "Happy fox nodding enthusiastically with both paws raised, clear yes response without symbols." },
+        { "file": "home-sleep.webp", "ratio": "1:1", "status": "needed", "scene": "Small teddy tucked into a cozy bed under a moonlit window." },
+        { "file": "home-sing.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly bird singing into a toy microphone with two loose music-note doodles." },
+        { "file": "home-wash.webp", "ratio": "1:1", "status": "needed", "scene": "Two hands washing under a faucet with gentle soap bubbles." }
+      ]
+    },
+    {
+      "id": "age4-hub",
+      "title": "Ten age-four game entrance tiles",
+      "assets": [
+        { "file": "hub-position.webp", "ratio": "1:1", "status": "needed", "scene": "Small teal bird flying between a bus, lamp and park bench like a friendly city treasure map." },
+        { "file": "hub-shapes.webp", "ratio": "1:1", "status": "needed", "scene": "Coral toy delivery truck carrying a circle, triangle and square parcel, exact clean shapes and no text." },
+        { "file": "hub-counting.webp", "ratio": "1:1", "status": "needed", "scene": "Powder-blue city bus with a small line of friendly animal passengers at the stop." },
+        { "file": "hub-traffic.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly crossing guard duck beside a clear traffic light and zebra crossing." },
+        { "file": "hub-sounds.webp", "ratio": "1:1", "status": "needed", "scene": "Rabbit detective holding one ear toward a ringing bicycle bell in the city." },
+        { "file": "hub-compare.webp", "ratio": "1:1", "status": "needed", "scene": "Tiny house, medium building and tall crane clearly arranged from short to tall." },
+        { "file": "hub-sequence.webp", "ratio": "1:1", "status": "needed", "scene": "Four small wordless morning objects following a curved path: bed, toothbrush, bowl, backpack." },
+        { "file": "hub-recycle.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly teal recycling truck collecting a clean paper box and bottle." },
+        { "file": "hub-emotions.webp", "ratio": "1:1", "status": "needed", "scene": "Two animal friends at a park, one sad and one offering a gentle hug." },
+        { "file": "hub-market.webp", "ratio": "1:1", "status": "needed", "scene": "Warm little market basket with apple, bread and carrot at a striped stall." }
+      ]
+    },
+    {
+      "id": "position-adventure",
+      "title": "Interactive position scene",
+      "assets": [
+        { "file": "position-city-map.webp", "ratio": "3:2", "status": "needed", "scene": "Interactive city park background: teal bus with open door, tall lamp, bench with clear space below, coral postbox, low fence with clear inside and outside areas; no bird and no people." },
+        { "file": "position-bird.webp", "ratio": "1:1-transparent", "status": "needed", "scene": "Separate small muted-teal bird draggable sprite, side view, wings slightly open, transparent background and soft handmade edge." }
+      ]
+    },
+    {
+      "id": "counting-bus",
+      "title": "Counting bus scene and reusable passenger sprites",
+      "assets": [
+        { "file": "counting-bus-scene.webp", "ratio": "3:2", "status": "needed", "scene": "Powder-blue city bus stopped with five large clear window seats and open door, empty bus, no numerals or passengers." },
+        { "file": "passenger-bear.webp", "ratio": "1:1-transparent", "status": "needed", "scene": "Small seated cocoa bear passenger, front-facing, transparent background." },
+        { "file": "passenger-rabbit.webp", "ratio": "1:1-transparent", "status": "needed", "scene": "Small seated ivory rabbit passenger, front-facing, transparent background." },
+        { "file": "passenger-fox.webp", "ratio": "1:1-transparent", "status": "needed", "scene": "Small seated mustard fox passenger, front-facing, transparent background." },
+        { "file": "passenger-otter.webp", "ratio": "1:1-transparent", "status": "needed", "scene": "Small seated warm-brown otter passenger, front-facing, transparent background." },
+        { "file": "passenger-mouse.webp", "ratio": "1:1-transparent", "status": "needed", "scene": "Small seated muted-teal mouse passenger, front-facing, transparent background." }
+      ]
+    },
+    {
+      "id": "traffic-and-sounds",
+      "title": "Traffic story and sound answer cards",
+      "assets": [
+        { "file": "traffic-ambulance.webp", "ratio": "1:1", "status": "needed", "scene": "Small unbranded ambulance approaching a crossing while cars safely wait to the side, no emergency injury." },
+        { "file": "traffic-child.webp", "ratio": "1:1", "status": "needed", "scene": "Preschool child waiting safely behind the curb beside a trusted adult's hand, no identifiable face." },
+        { "file": "traffic-dog.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly living dog waiting safely on leash at the curb beside adult shoes." },
+        { "file": "sound-bus.webp", "ratio": "1:1", "status": "needed", "scene": "Teal city bus gently honking with two small sound-wave doodles." },
+        { "file": "sound-dog.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly living dog barking once with two small sound-wave doodles." },
+        { "file": "sound-bike.webp", "ratio": "1:1", "status": "needed", "scene": "Powder-blue child's bicycle with a clearly ringing brass bell." },
+        { "file": "sound-train.webp", "ratio": "1:1", "status": "needed", "scene": "Small teal-and-coral toy-like train giving a gentle whistle." },
+        { "file": "sound-ambulance.webp", "ratio": "1:1", "status": "needed", "scene": "Small unbranded ambulance with soft coral beacon and two sound-wave doodles, no injury scene." }
+      ]
+    },
+    {
+      "id": "comparison",
+      "title": "Controlled-size comparison cards",
+      "assets": [
+        { "file": "compare-house-small.webp", "ratio": "1:1", "status": "needed", "scene": "Small cozy one-story house centered on a fixed ground baseline." },
+        { "file": "compare-building-tall.webp", "ratio": "1:1", "status": "needed", "scene": "Tall narrow teal apartment building centered on the same ground baseline." },
+        { "file": "compare-ball-small.webp", "ratio": "1:1", "status": "needed", "scene": "Small powder-blue play ball occupying 35 percent of frame height." },
+        { "file": "compare-ball-medium.webp", "ratio": "1:1", "status": "needed", "scene": "Same powder-blue play ball occupying 52 percent of frame height." },
+        { "file": "compare-ball-big.webp", "ratio": "1:1", "status": "needed", "scene": "Same powder-blue play ball occupying 70 percent of frame height." },
+        { "file": "compare-pencil-short.webp", "ratio": "1:1", "status": "needed", "scene": "Short coral pencil, horizontal, same design and baseline as long pencil." },
+        { "file": "compare-pencil-long.webp", "ratio": "1:1", "status": "needed", "scene": "Long coral pencil, horizontal, same design and baseline as short pencil." },
+        { "file": "compare-crane-tall.webp", "ratio": "1:1", "status": "needed", "scene": "Tall mustard construction crane, simple and centered on fixed ground baseline." },
+        { "file": "compare-bus-long.webp", "ratio": "1:1", "status": "needed", "scene": "Long powder-blue city bus in clean side view." },
+        { "file": "compare-car-medium.webp", "ratio": "1:1", "status": "needed", "scene": "Medium coral car in clean side view, same design family as tiny car." },
+        { "file": "compare-car-tiny.webp", "ratio": "1:1", "status": "needed", "scene": "Tiny coral car in clean side view, same baseline and camera as medium car." },
+        { "file": "compare-umbrella-small.webp", "ratio": "1:1", "status": "needed", "scene": "Small mustard umbrella, same design and centered baseline as other umbrella sizes." },
+        { "file": "compare-umbrella-medium.webp", "ratio": "1:1", "status": "needed", "scene": "Medium mustard umbrella, same design and centered baseline as other umbrella sizes." },
+        { "file": "compare-umbrella-big.webp", "ratio": "1:1", "status": "needed", "scene": "Large mustard umbrella, same design and centered baseline as other umbrella sizes." },
+        { "file": "compare-ladder-short.webp", "ratio": "1:1", "status": "needed", "scene": "Short teal ladder upright on fixed ground baseline, same design as other ladder sizes." },
+        { "file": "compare-ladder-medium.webp", "ratio": "1:1", "status": "needed", "scene": "Medium teal ladder upright on fixed ground baseline, same design as other ladder sizes." },
+        { "file": "compare-ladder-long.webp", "ratio": "1:1", "status": "needed", "scene": "Tall teal ladder upright on fixed ground baseline, same design as other ladder sizes." }
+      ]
+    },
+    {
+      "id": "daily-sequence",
+      "title": "Remaining daily-order scene cards",
+      "assets": [
+        { "file": "sequence-stop.webp", "ratio": "1:1", "status": "needed", "scene": "Child shoes stopped safely behind a curb line, with a raised adult hand; no written sign." },
+        { "file": "sequence-look-left.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly fox at the curb clearly turning head to the left, empty road visible." },
+        { "file": "sequence-look-right.webp", "ratio": "1:1", "status": "needed", "scene": "Same friendly fox at the curb clearly turning head to the right, empty road visible." },
+        { "file": "sequence-cross.webp", "ratio": "1:1", "status": "needed", "scene": "Duck family walking safely across a zebra crossing under a green light, no cars moving." },
+        { "file": "sequence-wet-hands.webp", "ratio": "1:1", "status": "needed", "scene": "Two hands getting wet under a gently running faucet." },
+        { "file": "sequence-soap.webp", "ratio": "1:1", "status": "needed", "scene": "One hand pressing a soap pump onto the other palm, one clear blob of soap." },
+        { "file": "sequence-rub-hands.webp", "ratio": "1:1", "status": "needed", "scene": "Two hands rubbing together with gentle soap bubbles." },
+        { "file": "sequence-rinse.webp", "ratio": "1:1", "status": "needed", "scene": "Two soapy hands rinsing clean under running water." },
+        { "file": "sequence-soil.webp", "ratio": "1:1", "status": "needed", "scene": "Small terracotta pot filled with soil beside a child-sized scoop." },
+        { "file": "sequence-seed.webp", "ratio": "1:1", "status": "needed", "scene": "One hand placing a single large seed into soil in a small pot." },
+        { "file": "sequence-water.webp", "ratio": "1:1", "status": "needed", "scene": "Small powder-blue watering can gently watering the planted pot." },
+        { "file": "sequence-sun.webp", "ratio": "1:1", "status": "needed", "scene": "Small planted pot resting in one warm sunbeam by a window." },
+        { "file": "sequence-grow.webp", "ratio": "1:1", "status": "needed", "scene": "Fresh two-leaf sprout growing from the same terracotta pot." },
+        { "file": "sequence-tidy.webp", "ratio": "1:1", "status": "needed", "scene": "Teddy bear and two blocks being placed into one woven toy basket." },
+        { "file": "sequence-bath.webp", "ratio": "1:1", "status": "needed", "scene": "Warm child bath with bubbles, toy duck and towel, no child body visible." },
+        { "file": "sequence-pajamas.webp", "ratio": "1:1", "status": "needed", "scene": "Folded powder-blue dotted pajamas with rounded white collar on a bed." },
+        { "file": "sequence-story.webp", "ratio": "1:1", "status": "needed", "scene": "Open wordless picture book beside a warm bedside lamp and teddy." },
+        { "file": "sequence-sleep.webp", "ratio": "1:1", "status": "needed", "scene": "Cozy bed under a moonlit window, blanket tucked and room quiet." },
+        { "file": "sequence-shirt.webp", "ratio": "1:1", "status": "needed", "scene": "Plain mustard child T-shirt laid neatly on a bed, no logo." },
+        { "file": "sequence-pants.webp", "ratio": "1:1", "status": "needed", "scene": "Plain deep-teal child pants laid neatly on a bed, no logo." },
+        { "file": "sequence-socks.webp", "ratio": "1:1", "status": "needed", "scene": "One matching pair of warm-ivory child socks side by side." },
+        { "file": "sequence-shoes.webp", "ratio": "1:1", "status": "needed", "scene": "One matching pair of warm-ivory child sneakers side by side, no logo." },
+        { "file": "sequence-dry-hands.webp", "ratio": "1:1", "status": "needed", "scene": "Two clean hands being dried with a soft mustard towel." },
+        { "file": "sequence-walk.webp", "ratio": "1:1", "status": "needed", "scene": "Two small sneakered feet walking along a curved park path." },
+        { "file": "sequence-park.webp", "ratio": "1:1", "status": "needed", "scene": "Simple park entrance with one tree, bench and open grassy space." },
+        { "file": "sequence-backpack.webp", "ratio": "1:1", "status": "needed", "scene": "One coral preschool backpack mistakenly sitting beside a bedtime teddy, no logo." }
+      ]
+    },
+    {
+      "id": "recycling",
+      "title": "Recycling, trash and reuse cards",
+      "assets": [
+        { "file": "recycle-newspaper.webp", "ratio": "1:1", "status": "needed", "scene": "Clean folded newspaper represented by blank cream pages and simple picture blocks, no readable text." },
+        { "file": "recycle-bin-paper.webp", "ratio": "1:1", "status": "needed", "scene": "Muted-teal paper recycling bin with a simple paper-sheet picture mark, no letters." },
+        { "file": "recycle-bin-plastic.webp", "ratio": "1:1", "status": "needed", "scene": "Powder-blue plastic recycling bin with a simple bottle picture mark, no letters." },
+        { "file": "recycle-bin-metal.webp", "ratio": "1:1", "status": "needed", "scene": "Mustard metal recycling bin with a simple can picture mark, no letters." },
+        { "file": "recycle-bottle.webp", "ratio": "1:1", "status": "needed", "scene": "One clean empty unbranded plastic water bottle." },
+        { "file": "recycle-can.webp", "ratio": "1:1", "status": "needed", "scene": "One clean empty unbranded aluminum can." },
+        { "file": "recycle-tissue.webp", "ratio": "1:1", "status": "needed", "scene": "One gently crumpled used tissue, clean-looking and not disgusting." },
+        { "file": "recycle-bin-trash.webp", "ratio": "1:1", "status": "needed", "scene": "Cocoa-brown general trash bin with a simple tied-bag picture mark, no letters." },
+        { "file": "recycle-box.webp", "ratio": "1:1", "status": "needed", "scene": "One clean flattened cardboard box with no printing or logo." },
+        { "file": "recycle-broken-toy.webp", "ratio": "1:1", "status": "needed", "scene": "One broken unbranded toy car with a wheel safely detached beside it, no sharp pieces." },
+        { "file": "recycle-bin-reuse.webp", "ratio": "1:1", "status": "needed", "scene": "Warm-ivory reuse basket with a shirt and jar picture mark, no letters." },
+        { "file": "recycle-juice-bottle.webp", "ratio": "1:1", "status": "needed", "scene": "One empty clear plastic juice bottle with coral cap, no label or logo." },
+        { "file": "recycle-jar.webp", "ratio": "1:1", "status": "needed", "scene": "One clean intact glass jar ready to use again, teal lid beside it." },
+        { "file": "recycle-shirt.webp", "ratio": "1:1", "status": "needed", "scene": "One clean too-small mustard child T-shirt folded for reuse, no logo." }
+      ]
+    },
+    {
+      "id": "emotions",
+      "title": "Emotion and kind-response cards",
+      "assets": [
+        { "file": "emotion-happy.webp", "ratio": "1:1", "status": "needed", "scene": "Consistent friendly otter character smiling with relaxed open posture, clearly happy." },
+        { "file": "emotion-sad.webp", "ratio": "1:1", "status": "needed", "scene": "Same friendly otter with lowered ears and eyes, small frown, clearly sad but not dramatically crying." },
+        { "file": "emotion-angry.webp", "ratio": "1:1", "status": "needed", "scene": "Same friendly otter with scrunched eyebrows and crossed paws, clearly angry but not frightening." },
+        { "file": "emotion-surprised.webp", "ratio": "1:1", "status": "needed", "scene": "Same friendly otter with wide eyes, raised paws and small round mouth, clearly surprised." },
+        { "file": "emotion-afraid.webp", "ratio": "1:1", "status": "needed", "scene": "Same friendly otter hugging knees with worried eyes, clearly afraid but safe." },
+        { "file": "kind-hug.webp", "ratio": "1:1", "status": "needed", "scene": "Two animal friends sharing a gentle side hug." },
+        { "file": "kind-walk-away.webp", "ratio": "1:1", "status": "needed", "scene": "One animal friend walking away alone while another remains seated in the distance, neutral and non-punitive." },
+        { "file": "kind-play-alone.webp", "ratio": "1:1", "status": "needed", "scene": "One animal playing alone with a ball while another friend sits apart, clear lack of helping." },
+        { "file": "kind-rebuild.webp", "ratio": "1:1", "status": "needed", "scene": "Two animal friends rebuilding a small block tower together." },
+        { "file": "kind-stay-close.webp", "ratio": "1:1", "status": "needed", "scene": "Two animal friends holding paws under a cozy blanket while gentle rain shows outside." },
+        { "file": "kind-wave.webp", "ratio": "1:1", "status": "needed", "scene": "Friendly animal waving hello to a shy new animal at the park gate." }
+      ]
+    },
+    {
+      "id": "market",
+      "title": "Market product cards; quantities remain HTML",
+      "assets": [
+        { "file": "market-apple.webp", "ratio": "1:1", "status": "needed", "scene": "One fresh coral-red apple on a small cream market cloth." },
+        { "file": "market-bread.webp", "ratio": "1:1", "status": "needed", "scene": "One warm unbranded bread roll in a tiny woven basket." },
+        { "file": "market-strawberry.webp", "ratio": "1:1", "status": "needed", "scene": "One fresh strawberry with muted-teal leaves on a cream cloth." },
+        { "file": "market-banana.webp", "ratio": "1:1", "status": "needed", "scene": "One ripe mustard-yellow banana on a cream market cloth." },
+        { "file": "market-carrot.webp", "ratio": "1:1", "status": "needed", "scene": "One fresh coral-orange carrot with muted-teal leaves on a cream cloth." }
+      ]
+    }
+  ]
+}

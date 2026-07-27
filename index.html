@@ -4,54 +4,66 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#244f49">
-  <meta name="description" content="A private-family-inspired collection of warm illustrated picture books for young children.">
-  <title>Our Family Picture Books</title>
+  <meta name="description" content="Ellie 的英文課、家庭繪本與 4 歲能力遊戲入口。">
+  <title>Ellie 的學習花園｜英文課・繪本・4 歲遊戲</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="hero">
-    <p class="kicker">OUR LITTLE LIBRARY</p>
-    <h1>Our Family<br><span>Picture Books</span></h1>
-    <p>選一本故事，一起看圖、翻頁、聽旁白。</p>
+    <div>
+      <p class="kicker">ELLIE'S LEARNING GARDEN</p>
+      <h1>今天，想去哪一座<br><span>學習小花園？</span></h1>
+      <p>英文課複習、家庭繪本和 4 歲能力遊戲，都整理成孩子看得懂的大入口。</p>
+    </div>
+    <nav class="category-nav" aria-label="三個學習入口">
+      <a href="#school"><b>01</b><span>學校相關<small>英文課遊戲</small></span></a>
+      <a href="#books"><b>02</b><span>繪本相關<small>故事與雙語旁白</small></span></a>
+      <a href="#age-four"><b>03</b><span>4 歲能力遊戲<small>觸控思考挑戰</small></span></a>
+    </nav>
   </header>
-  <main class="library" aria-label="Picture-book library">
-    <a class="book-card" href="games/index.html">
-      <img src="assets/four-year-old-games.svg" alt="Playful shapes, traffic lights, numbers, and sorting games">
-      <div><small>AGE 4 · 中文 / ENGLISH</small><h2>4 歲雙語小遊戲</h2><p>Ten touch-friendly adventures for shapes, counting, sounds, emotions, sequences, and everyday thinking.</p></div>
-    </a>
-    <a class="book-card" href="books/ellie-lucas-sun-moon-lake.html">
-      <img src="books/assets/ellie-lucas-sun-moon-lake-warm-folk/page-00.webp" alt="Ellie, Lucas, and their family arriving at a Sun Moon Lake hotel">
-      <div><small>ELLIE + LUCAS · 中文 / ENGLISH</small><h2>Sun Moon Lake Hotel Adventure</h2><p>A joyful family trip with Grandma, a pool adventure, little cars, and a warm hot-spring evening.</p></div>
-    </a>
-    <a class="book-card" href="books/ellie-cheng-yie-lucas-sharing.html">
-      <img src="books/assets/ellie-cheng-yie-lucas-sharing-warm-folk/page-00.webp" alt="Cheng Yie, Ellie, and Lucas sharing toys beside Sun Moon Lake">
-      <div><small>ELLIE + CHENG YIE + LUCAS · 中文 / ENGLISH</small><h2>Sun Moon Lake Sharing Adventure</h2><p>Flowers, treats, bubbles, pretend phones, little cars, and a gentle cable-car worry shared by three siblings.</p></div>
-    </a>
-    <a class="book-card" href="books/ellie-taitung-stars.html">
-      <img src="books/assets/ellie-taitung-stars-warm-folk/page-00.webp" alt="Ellie holding a pink shell at Duli Beach">
-      <div><small>ELLIE · 中文 / ENGLISH</small><h2>Ellie's Taitung Starry Adventure</h2><p>A pink shell, tiny beach friends, family laughter, and a slipper filled with starlight.</p></div>
-    </a>
-    <a class="book-card" href="books/lucas-hualien-summer.html">
-      <img src="books/assets/lucas-hualien-summer-warm-folk/page-00.webp" alt="Lucas at Qixingtan Bay">
-      <div><small>LUCAS · 中文 / ENGLISH</small><h2>Lucas 的花蓮夏天</h2><p>七星潭的大海浪，和水盆裡的小水花。</p></div>
-    </a>
-    <a class="book-card" href="books/elsa-goodnight.html">
-      <img src="books/assets/elsa-warm-folk/page-00.webp" alt="A warm illustrated bedtime story cover">
-      <div><small>ELLIE · 中文 / ENGLISH</small><h2>Ellie's Big-Kid Magic</h2><p>A gentle bedtime story about growing up.</p></div>
-    </a>
-    <a class="book-card" href="books/ellie-octopus.html">
-      <img src="books/assets/ellie-octopus-warm-folk/page-00.webp" alt="A warm illustrated story cover">
-      <div><small>ELLIE · 中文 / ENGLISH</small><h2>Ellie and the Octopus Mouth</h2><p>A playful story for saying goodnight to the bottle.</p></div>
-    </a>
-    <a class="book-card" href="books/ellie-try-again.html">
-      <img src="books/assets/ellie-try-again-warm-folk/page-00.webp" alt="A warm illustrated practice story cover">
-      <div><small>ELLIE · 中文 / ENGLISH</small><h2>Ellie's Try-Again Magic</h2><p>Try, learn, and try one more time.</p></div>
-    </a>
-    <a class="book-card" href="books/ellie-busy-fingers.html">
-      <img src="books/assets/ellie-busy-fingers-warm-folk/page-00.webp" alt="A warm illustrated busy-fingers story cover">
-      <div><small>ELLIE · 中文 / ENGLISH</small><h2>Ellie and the Busy Little Fingers</h2><p>A warm story for curious hands.</p></div>
-    </a>
+
+  <main>
+    <section class="collection collection--school" id="school" aria-labelledby="schoolTitle">
+      <div class="collection-heading">
+        <div><p class="section-number">01 · SCHOOL</p><h2 id="schoolTitle">學校相關</h2><p>把 16 段 Pony 英文課 〈I Grow Up〉整理成短短的聽說遊戲。</p></div>
+        <a class="section-cta" href="school/index.html">進入英文課遊戲屋 <span>→</span></a>
+      </div>
+      <a class="feature-card feature-card--school" href="school/index.html">
+        <div class="school-art" aria-hidden="true"><span>♪</span><i></i><b>U</b><em>10</em></div>
+        <div><small>AGE 4 · LISTEN & SPEAK</small><h3>Pony 英文課遊戲屋</h3><p>身體部位、五官功能、數量、U–Z 字母音與放學對話。每次 4–7 分鐘，先聽再點，不用認字。</p><ul><li>5 款小遊戲</li><li>慢速英文朗讀</li><li>沒有倒數與扣分</li></ul></div>
+        <strong>開始玩 →</strong>
+      </a>
+    </section>
+
+    <section class="collection" id="books" aria-labelledby="booksTitle">
+      <div class="collection-heading">
+        <div><p class="section-number">02 · PICTURE BOOKS</p><h2 id="booksTitle">繪本相關</h2><p>選一本故事，一起看圖、翻頁、聽中英文旁白。</p></div>
+      </div>
+      <div class="library">
+        <a class="book-card" href="books/ellie-lucas-sun-moon-lake.html"><img src="books/assets/ellie-lucas-sun-moon-lake-warm-folk/page-00.webp" alt="Ellie、Lucas 和家人抵達日月潭飯店的暖色插畫"><div><small>ELLIE + LUCAS · 雙語</small><h3>Sun Moon Lake Hotel Adventure</h3><p>泳池、小車車與一家人的溫暖旅行。</p></div></a>
+        <a class="book-card" href="books/ellie-cheng-yie-lucas-sharing.html"><img src="books/assets/ellie-cheng-yie-lucas-sharing-warm-folk/page-00.webp" alt="三兄妹在日月潭分享玩具的暖色插畫"><div><small>三兄妹 · 雙語</small><h3>Sun Moon Lake Sharing Adventure</h3><p>在遊戲中練習分享，也接住小小擔心。</p></div></a>
+        <a class="book-card" href="books/ellie-taitung-stars.html"><img src="books/assets/ellie-taitung-stars-warm-folk/page-00.webp" alt="Ellie 在海邊拿著粉紅貝殼的暖色插畫"><div><small>ELLIE · 雙語</small><h3>Ellie's Taitung Starry Adventure</h3><p>粉紅貝殼、海邊朋友和裝滿星光的拖鞋。</p></div></a>
+        <a class="book-card" href="books/lucas-hualien-summer.html"><img src="books/assets/lucas-hualien-summer-warm-folk/page-00.webp" alt="Lucas 在七星潭看海浪的暖色插畫"><div><small>LUCAS · 雙語</small><h3>Lucas 的花蓮夏天</h3><p>七星潭的大海浪，和水盆裡的小水花。</p></div></a>
+        <a class="book-card" href="books/elsa-goodnight.html"><img src="books/assets/elsa-warm-folk/page-00.webp" alt="Ellie 的晚安成長故事封面"><div><small>ELLIE · 雙語</small><h3>Ellie's Big-Kid Magic</h3><p>一個關於長大的溫柔晚安故事。</p></div></a>
+        <a class="book-card" href="books/ellie-octopus.html"><img src="books/assets/ellie-octopus-warm-folk/page-00.webp" alt="Ellie 與章魚嘴巴故事封面"><div><small>ELLIE · 雙語</small><h3>Ellie and the Octopus Mouth</h3><p>跟奶瓶說晚安的爆笑小夢。</p></div></a>
+        <a class="book-card" href="books/ellie-try-again.html"><img src="books/assets/ellie-try-again-warm-folk/page-00.webp" alt="Ellie 練習再試一次的故事封面"><div><small>ELLIE · 雙語</small><h3>Ellie's Try-Again Magic</h3><p>試一試、學一學，再來一次。</p></div></a>
+        <a class="book-card" href="books/ellie-busy-fingers.html"><img src="books/assets/ellie-busy-fingers-warm-folk/page-00.webp" alt="Ellie 和忙碌小手指故事封面"><div><small>ELLIE · 雙語</small><h3>Ellie and the Busy Little Fingers</h3><p>讓好奇小手找到新的工作。</p></div></a>
+      </div>
+    </section>
+
+    <section class="collection collection--games" id="age-four" aria-labelledby="gamesTitle">
+      <div class="collection-heading">
+        <div><p class="section-number">03 · AGE FOUR</p><h2 id="gamesTitle">4 歲能力遊戲</h2><p>不是考卷，是用手指探索形狀、數量、記憶、順序與情緒。</p></div>
+        <a class="section-cta" href="games/index.html">開啟 10 款能力遊戲 <span>→</span></a>
+      </div>
+      <a class="feature-card feature-card--games" href="games/index.html">
+        <img src="assets/four-year-old-games.svg" alt="形狀、交通號誌、數字與分類遊戲的童趣插畫">
+        <div><small>AGE 4 · 中文 / ENGLISH</small><h3>城市學習遊戲館</h3><p>10 款手機和平板友善的觸控遊戲，每款從單一步驟慢慢走到記憶與規則切換。</p><ul><li>形狀與數量</li><li>聽覺與順序</li><li>情緒與生活規則</li></ul></div>
+        <strong>開始玩 →</strong>
+      </a>
+    </section>
   </main>
-  <footer>Made with love for family story time.</footer>
+
+  <footer><b>♥</b> 一次選一個小活動；孩子累了或不想玩時，就停下來抱一抱。</footer>
 </body>
 </html>

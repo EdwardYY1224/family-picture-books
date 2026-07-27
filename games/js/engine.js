@@ -174,6 +174,19 @@
 
   /* ---------- visuals ---------- */
   function createVisual(item, className) {
+    if (item.scene) {
+      const wrap = document.createElement("span");
+      wrap.className = `scene-card-visual ${className?.includes("slot") ? "scene-card-visual--slot" : ""}`.trim();
+      const image = document.createElement("img");
+      image.src = `../assets/scene-cards/${item.scene}.webp`;
+      image.alt = "";
+      image.draggable = false;
+      image.addEventListener("error", () => {
+        wrap.replaceWith(icons.el(item.icon || "star", className || "icon-svg"));
+      }, { once: true });
+      wrap.append(image);
+      return wrap;
+    }
     if (item.shape) return icons.shapeEl(item.shape, item.color, className || "icon-svg");
     if (item.light) {
       const name = `light${item.light[0].toUpperCase()}${item.light.slice(1)}`;
@@ -319,7 +332,15 @@
     scene.className = "count-scene";
     const focus = document.createElement("div");
     focus.className = `count-focus${part.focus === "basket" ? " count-focus--basket" : ""}`;
-    focus.append(icons.el(part.focus || "bus", "icon-svg icon-svg--focus"));
+    if (part.scene) {
+      const image = document.createElement("img");
+      image.className = "count-focus__scene";
+      image.src = `../assets/scene-cards/${part.scene}.webp?v=20260727-runtime1`;
+      image.alt = "";
+      image.draggable = false;
+      image.addEventListener("error", () => image.replaceWith(icons.el(part.focus || "bus", "icon-svg icon-svg--focus")), { once: true });
+      focus.append(image);
+    } else focus.append(icons.el(part.focus || "bus", "icon-svg icon-svg--focus"));
     const row = document.createElement("div");
     row.className = "token-row";
     for (let index = 0; index < part.total; index += 1) {
@@ -327,7 +348,16 @@
       button.type = "button";
       button.className = "count-token";
       const iconName = part.itemAlt && index % 2 ? part.itemAlt : part.item;
-      button.append(icons.el(iconName, "icon-svg icon-svg--token"));
+      const card = part.passengers?.[index % part.passengers.length] || part.itemScene;
+      if (card) {
+        const image = document.createElement("img");
+        image.className = `count-token__image${part.passengers ? " count-token__image--sprite" : ""}`;
+        image.src = `../assets/scene-cards/${card}.webp?v=20260727-runtime1`;
+        image.alt = "";
+        image.draggable = false;
+        image.addEventListener("error", () => image.replaceWith(icons.el(iconName, "icon-svg icon-svg--token")), { once: true });
+        button.append(image);
+      } else button.append(icons.el(iconName, "icon-svg icon-svg--token"));
       button.addEventListener("click", () => {
         if (state.solved) return;
         if (state.selected.has(index)) state.selected.delete(index); else state.selected.add(index);
@@ -367,7 +397,7 @@
     deck.forEach((step) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "sequence-card";
+      button.className = `sequence-card${step.scene ? " sequence-card--scene" : ""}`;
       button.dataset.value = step.value;
       button.append(createVisual(step, "icon-svg icon-svg--card"));
       const text = document.createElement("b");
@@ -381,6 +411,7 @@
         const slot = slots.children[state.sequenceIndex];
         slot.replaceChildren(createVisual(step, "icon-svg icon-svg--slot"));
         slot.classList.add("filled");
+        slot.classList.toggle("sequence-slot--scene", Boolean(step.scene));
         button.disabled = true;
         state.sequenceIndex += 1;
         playTone(560 + state.sequenceIndex * 60, 0.12, "sine", 0);

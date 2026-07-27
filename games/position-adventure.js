@@ -200,6 +200,8 @@
 
   const elements = {
     playground: document.querySelector("#playground"),
+    positionMap: document.querySelector("#positionMap"),
+    birdArt: document.querySelector("#birdArt"),
     bird: document.querySelector("#bird"),
     missionText: document.querySelector("#missionText"),
     roundLabel: document.querySelector("#roundLabel"),
@@ -222,6 +224,15 @@
     hintCount: document.querySelector("#hintCount"),
     playAgainButton: document.querySelector("#playAgainButton"),
   };
+
+  const useSceneArt = () => elements.playground.classList.add("has-scene-art");
+  if (elements.positionMap.complete && elements.positionMap.naturalWidth) useSceneArt();
+  else elements.positionMap.addEventListener("load", useSceneArt, { once: true });
+  elements.positionMap.addEventListener("error", () => elements.positionMap.remove(), { once: true });
+  const useBirdArt = () => elements.bird.classList.add("has-bird-art");
+  if (elements.birdArt.complete && elements.birdArt.naturalWidth) useBirdArt();
+  else elements.birdArt.addEventListener("load", useBirdArt, { once: true });
+  elements.birdArt.addEventListener("error", () => elements.birdArt.remove(), { once: true });
 
   const state = {
     roundIndex: 0,

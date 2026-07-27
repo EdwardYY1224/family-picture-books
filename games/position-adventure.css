@@ -120,6 +120,13 @@ button:focus-visible, a:focus-visible { outline: 4px solid rgba(50, 123, 192, .3
   user-select: none;
   -webkit-user-select: none;
 }
+.position-map { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; display: block; object-fit: fill; pointer-events: none; }
+.playground.has-scene-art .landmark { display: none !important; }
+.playground.has-scene-art .drop-zone[data-zone="inside"] { width: 13%; height: 24%; left: 18%; top: 47%; }
+.playground.has-scene-art .drop-zone[data-zone="above"] { width: 16%; height: 23%; left: 28%; top: 4%; }
+.playground.has-scene-art .drop-zone[data-zone="below"] { width: 25%; height: 22%; left: 39%; top: 70%; }
+.playground.has-scene-art .drop-zone[data-zone="beside"] { width: 13%; height: 29%; left: 73%; top: 51%; }
+.playground.has-scene-art .drop-zone[data-zone="outside"] { width: 10%; height: 30%; left: 89%; top: 50%; }
 .paper-grain { position: absolute; inset: 0; z-index: 0; opacity: .13; pointer-events: none; background-image: radial-gradient(rgba(36,79,73,.7) .55px, transparent .75px); background-size: 10px 10px; }
 .doodle { position: absolute; z-index: 1; font-family: Georgia, serif; pointer-events: none; }
 .doodle--star { right: 7%; top: 6%; color: var(--yellow); font-size: 34px; transform: rotate(10deg); }
@@ -195,6 +202,8 @@ button:focus-visible, a:focus-visible { outline: 4px solid rgba(50, 123, 192, .3
   transition: left .32s cubic-bezier(.2,.9,.3,1.1), top .32s cubic-bezier(.2,.9,.3,1.1), transform .18s, filter .18s;
 }
 .bird svg { display: block; width: 100%; overflow: visible; pointer-events: none; }
+.bird > img { width: 100%; height: 100%; display: block; object-fit: contain; pointer-events: none; }
+.bird.has-bird-art svg { display: none; }
 .bird-body, .bird-head { fill: var(--blue); stroke: var(--green-deep); stroke-width: 4; }
 .bird-wing { fill: var(--yellow); stroke: var(--green-deep); stroke-width: 4; }
 .bird-tail { fill: var(--coral); stroke: var(--green-deep); stroke-width: 4; stroke-linejoin: round; }

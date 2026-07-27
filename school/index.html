@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="把 Pony 英文課內容變成適合 4 歲孩子的五款聽說觸控遊戲。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f5c94f'/%3E%3Cpath d='M18 35c7 10 21 10 28 0' fill='none' stroke='%23244f49' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='25' r='3' fill='%23244f49'/%3E%3Ccircle cx='41' cy='25' r='3' fill='%23244f49'/%3E%3C/svg%3E">
+  <title>Pony 英文課遊戲屋｜Ellie 的學習花園</title>
+  <link rel="stylesheet" href="school.css?v=20260726-scene3">
+</head>
+<body class="school-hub">
+  <header class="school-hero">
+    <a class="circle-link" href="../index.html" aria-label="回到學習花園">←</a>
+    <div class="school-hero__copy">
+      <p class="kicker">PONY CLASS · I GROW UP</p>
+      <h1>英文課遊戲屋</h1>
+      <p>把課堂裡的身體、動作、數字、字母和放學對話，變成一小口一小口的聽說遊戲。</p>
+      <div class="lesson-note"><span aria-hidden="true">♥</span><b>每次選一款就好</b><small>4–7 分鐘 · 先聽再點 · 不用認字</small></div>
+    </div>
+    <img class="school-hero__art" src="../assets/scene-cards/school-hero-room.webp?v=20260727-runtime1" alt="" aria-hidden="true">
+  </header>
+
+  <main class="school-main">
+    <section class="scene-feature" aria-labelledby="sceneFeatureTitle">
+      <div class="scene-feature__gallery" aria-hidden="true">
+        <img src="../assets/scene-cards/see.webp?v=20260726-scene3" alt="">
+        <img src="../assets/scene-cards/hear.webp?v=20260726-scene3" alt="">
+        <img src="../assets/scene-cards/smell.webp?v=20260726-scene3" alt="">
+      </div>
+      <div class="scene-feature__copy">
+        <p class="section-label">NEW · 精緻童書場景卡</p>
+        <h2 id="sceneFeatureTitle">看、聽、聞：用故事畫面學英文</h2>
+        <p>不再只看小圖示。先聽英文，再從完整的童書場景中找答案。</p>
+        <a class="scene-feature__button" href="play.html?game=actions&amp;v=20260726-scene3">先玩這一款 <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="chooseTitle">
+      <p class="section-label">LISTEN · TOUCH · SAY</p>
+      <h2 id="chooseTitle">今天想玩哪一款？</h2>
+      <div class="lesson-grid" id="lessonGrid"></div>
+    </section>
+
+    <section class="grownup-note" aria-labelledby="grownupTitle">
+      <div class="grownup-note__mark" aria-hidden="true">♪</div>
+      <div>
+        <p class="section-label">給陪玩的大人</p>
+        <h2 id="grownupTitle">跟課堂用同一句話，孩子更容易接上</h2>
+        <p>題目整理自 16 段家長提供的 〈I Grow Up〉課程音檔。原教材音檔不放進公開網站；頁面以慢速英文朗讀已核對的課堂句型。</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="../games/js/icons.js?v=20260726-scene3"></script>
+  <script src="school-data.js?v=20260726-scene3"></script>
+  <script>
+    (() => {
+      const progress = JSON.parse(localStorage.getItem("pony-class-progress-v1") || "{}");
+      const grid = document.querySelector("#lessonGrid");
+      window.PonySchool.games.filter((game) => game.id !== "actions").forEach((game) => {
+        const link = document.createElement("a");
+        link.className = `lesson-card lesson-card--${game.tone}`;
+        link.href = `play.html?game=${game.id}&v=20260726-scene3`;
+        const icon = document.createElement("span");
+        icon.className = "lesson-card__icon";
+        const tileArt = { body: "school-tile-body", count: "school-tile-count", letters: "school-tile-letters", home: "school-tile-home" }[game.id];
+        const image = document.createElement("img");
+        image.src = `../assets/scene-cards/${tileArt}.webp?v=20260727-runtime1`;
+        image.alt = "";
+        image.addEventListener("error", () => image.replaceWith(window.KidIcons.el(game.icon, "icon-svg")), { once: true });
+        icon.append(image);
+        const copy = document.createElement("div");
+        copy.innerHTML = `<small>${game.skill}</small><h3>${game.title}</h3><p>${game.blurb}</p>`;
+        if (progress[game.id]?.complete) {
+          const badge = document.createElement("em");
+          badge.textContent = "✓ 玩過了，再玩一次";
+          copy.append(badge);
+        }
+        const arrow = document.createElement("b");
+        arrow.textContent = "→";
+        link.append(icon, copy, arrow);
+        grid.append(link);
+      });
+    })();
+  </script>
+</body>
+</html>
