@@ -52,7 +52,7 @@
   }
   function narrate(index) {
     stopNarration(); if (!state.sound) return;
-    const folder = state.lang === "zh" ? "audio-sharing-adventure-zh" : "audio-sharing-adventure";
+    const folder = state.lang === "zh" ? "audio-sharing-adventure-natural-zh" : "audio-sharing-adventure-natural";
     const audioSrc = embeddedAssets?.audio?.[state.lang]?.[index] || `${folder}/page-${pageId(index)}.mp3`;
     const audio = new Audio(audioSrc); state.audio = audio;
     els.speakButton.classList.add("is-speaking");
