@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="Sarah 創作的溫柔雙語繪本：Ellie 練習照顧嘴巴與鼻子，發現自己原本就有公主般的光芒。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M10 22l11 10 11-18 11 18 11-10-4 28H14z' fill='%23f5c94f' stroke='%23244f49' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>Ellie's Princess Glow｜Sarah 創作雙語繪本</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到家庭學習地圖">← <i>學習地圖</i></a>
+    <div class="book-brand">
+      <b>Ellie's Princess Glow</b>
+      <small>Ellie 的公主光芒 · Sarah 創作</small>
+    </div>
+    <div class="book-tools">
+      <button class="pill-button" id="languageButton" type="button" aria-label="切換成中文">中文</button>
+      <button class="pill-button" id="tipsButton" type="button">♥ 給爸媽</button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>朗讀開</i></button>
+    </div>
+  </header>
+
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">A STORY BY SARAH · ELLIE'S MOM</p>
+        <h1>Ellie's<br>Princess Glow</h1>
+        <p class="cover-sub">普通小女孩的公主光芒 · Sarah 創作</p>
+        <button class="start-button" id="startButton" type="button">翻開故事 ▶</button>
+      </div>
+
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="再聽一次">🔊</button>
+        <div class="story-copy">
+          <p class="story-en" id="storyEn"></p>
+          <p class="story-zh" id="storyZh"></p>
+        </div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>♥ 給爸媽：健康習慣不是變漂亮的交換條件</h2>
+      <ul>
+        <li><b>先說孩子本來就很美</b>：故事裡的「公主光芒」是自信、照顧自己與願意再試一次，不是符合單一外貌標準。</li>
+        <li><b>奶瓶慢慢退場</b>：可和孩子一起選杯子、安排告別儀式，並用擁抱、喝水或深呼吸替代安撫；不要羞辱、恐嚇或突然懲罰。</li>
+        <li><b>不保證改變臉型</b>：減少長時間或睡前含奶瓶有助口腔照護，但每個孩子的牙齒與顎骨發展不同；有疑問請詢問兒童牙醫。</li>
+        <li><b>鼻子癢先處理原因</b>：準備柔軟面紙，教孩子輕輕擤鼻；乾燥或鼻塞時可向兒科醫師詢問無藥性的生理食鹽水是否適合。</li>
+        <li><b>稱讚察覺，不追求完美</b>：孩子即使已經摸了鼻子，只要能停下並換個方法，就可以說：「你注意到了，也願意再試一次。」</li>
+        <li>若反覆鼻出血、鼻內疼痛或疑似有異物，或對牙齒咬合與奶瓶戒除有擔心，請尋求兒科醫師或兒童牙醫協助。</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+
+  <script src="ellie-princess-glow.js"></script>
+</body>
+</html>
