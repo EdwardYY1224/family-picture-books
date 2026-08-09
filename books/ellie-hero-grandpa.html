@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <meta name="description" content="Ellie 在森林遇見巨大的蟑螂，超人爺爺帶著神奇藍白拖鞋前來救援的溫馨雙語互動繪本。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M9 38l36-20 10 13-36 20z' fill='%23f8f3e9' stroke='%23244f49' stroke-width='4'/%3E%3Cpath d='M18 41l18-13 10 8' fill='none' stroke='%233d6e98' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>我的超人爺爺－打蟑螂篇｜Ellie 的森林冒險</title>
+  <link rel="stylesheet" href="elsa-goodnight.css">
+  <link rel="stylesheet" href="ellie-hero-grandpa.css">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到學習地圖">⌂ <i>學習地圖</i></a>
+    <div class="book-brand">
+      <b>我的超人爺爺－打蟑螂篇</b>
+      <small>Hero Grandpa vs. the Giant Cockroach</small>
+    </div>
+    <div class="book-tools">
+      <button class="pill-button" id="languageButton" type="button" aria-label="Switch to English">EN</button>
+      <button class="pill-button" id="tipsButton" type="button">♡ <i>共讀提示</i></button>
+      <button class="pill-button" id="musicButton" type="button" aria-pressed="true">♫ <i>音樂開</i></button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>旁白開</i></button>
+    </div>
+  </header>
+
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker">ELLIE'S FOREST ADVENTURE</p>
+        <h1>我的超人爺爺<br>打蟑螂篇</h1>
+        <p class="cover-sub">Hero Grandpa vs. the Giant Cockroach</p>
+        <button class="start-button" id="startButton" type="button">開始冒險 ▶</button>
+      </div>
+
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="再聽一次">🔊</button>
+        <div class="story-copy">
+          <p class="story-en" id="storyEn"></p>
+          <p class="story-zh" id="storyZh"></p>
+        </div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+
+  <div class="audio-status" id="audioStatus" role="status" aria-live="polite" hidden></div>
+
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2>和孩子一起讀：勇敢不是一個人硬撐</h2>
+      <ul>
+        <li><b>先離開、再求救：</b>提醒孩子看到害蟲時不要靠近或自己捕捉，要退到安全的地方，請大人幫忙。</li>
+        <li><b>手環是故事魔法：</b>現實生活可以一起練習說出姓名、位置，以及「我需要幫忙」。</li>
+        <li><b>勇敢也可以害怕：</b>Ellie 會慌張，但她想起求救方法；勇敢是害怕時仍願意做安全的選擇。</li>
+        <li><b>拖鞋由大人使用：</b>故事中的巨大拖鞋是誇張的童話道具，不鼓勵孩子追打昆蟲或動物。</li>
+        <li><b>兩代人的英雄：</b>問孩子：「家裡有誰曾經幫助你？你想怎麼謝謝他？」</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+
+  <script src="ellie-hero-grandpa.js"></script>
+</body>
+</html>

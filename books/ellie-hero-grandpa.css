@@ -1,0 +1,45 @@
+.story-en,
+.story-zh {
+  margin: 0;
+  font: 650 clamp(18px, 2.45vw, 26px)/1.5 Georgia, "Noto Serif TC", serif;
+}
+
+.story-zh { color: #344d47; }
+.story-en { color: #3c514c; }
+
+.book-header { grid-template-columns: auto minmax(120px, 1fr) auto; }
+.book-tools { flex-wrap: wrap; justify-content: flex-end; }
+
+.audio-status {
+  position: fixed;
+  z-index: 80;
+  left: 50%;
+  bottom: max(24px, calc(12px + env(safe-area-inset-bottom)));
+  translate: -50% 0;
+  padding: 11px 18px;
+  border: 2px solid #173c37;
+  border-radius: 999px;
+  background: rgba(23, 60, 55, .94);
+  color: #fffaf0;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(23, 60, 55, .24);
+}
+
+.audio-status[hidden] { display: none; }
+.pill-button[aria-pressed="false"] { background: rgba(255, 255, 255, .18); opacity: .78; }
+
+@media (max-width: 760px) {
+  .book-header { gap: 6px; padding-inline: 8px; }
+  .pill-button { min-width: 42px; padding: 0 10px; justify-content: center; }
+  .cover-overlay { background: rgba(23, 60, 55, .32); }
+  .cover-overlay h1 { font-family: Georgia, "Noto Serif TC", serif; letter-spacing: .04em; }
+}
+
+@media (max-width: 440px) {
+  .book-brand b { font-size: 14px; }
+  .book-tools { gap: 4px; }
+  .pill-button { min-height: 40px; min-width: 38px; padding: 0 8px; }
+  .story-en,
+  .story-zh { font-size: 17px; line-height: 1.5; }
+}
