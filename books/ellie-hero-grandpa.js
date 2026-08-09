@@ -109,6 +109,10 @@
     lang: requestedLanguage === "en" ? "en" : "zh"
   };
   let statusTimer = 0;
+  let narrationRun = 0;
+  let autoAdvanceTimer = 0;
+  let lastManualNavigationAt = 0;
+  const activeNarrationAudios = new Set();
 
   function showAudioStatus(message) {
     window.clearTimeout(statusTimer);
@@ -161,12 +165,23 @@
   }
 
   function stopNarration() {
+    narrationRun += 1;
+    window.clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = 0;
+    activeNarrationAudios.forEach((audio) => {
+      audio.onended = null;
+      audio.onerror = null;
+      audio.pause();
+      try { audio.currentTime = 0; } catch (_) {}
+    });
+    activeNarrationAudios.clear();
     if (state.audio) {
       state.audio.onended = null;
       state.audio.onerror = null;
       state.audio.pause();
-      state.audio = null;
+      try { state.audio.currentTime = 0; } catch (_) {}
     }
+    state.audio = null;
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     els.speakButton.classList.remove("is-speaking");
     setMusicVolume();
@@ -175,6 +190,7 @@
   function speakFallback(index) {
     stopNarration();
     if (!state.sound || !("speechSynthesis" in window)) return;
+    const run = narrationRun;
     const utterance = new SpeechSynthesisUtterance(PAGES[index][state.lang]);
     utterance.lang = state.lang === "zh" ? "zh-TW" : "en-US";
     utterance.rate = state.lang === "zh" ? 0.9 : 0.92;
@@ -183,19 +199,28 @@
     const voices = window.speechSynthesis.getVoices().filter((voice) =>
       voice.lang.toLowerCase().replace("_", "-").startsWith(prefix));
     utterance.voice = voices.find((voice) => /natural|online|google/i.test(voice.name)) || voices[0] || null;
-    utterance.onstart = () => els.speakButton.classList.add("is-speaking");
-    utterance.onend = () => {
-      els.speakButton.classList.remove("is-speaking");
-      advanceAfterNarration(index);
+    utterance.onstart = () => {
+      if (run === narrationRun && state.index === index) {
+        els.speakButton.classList.add("is-speaking");
+      }
     };
-    utterance.onerror = () => els.speakButton.classList.remove("is-speaking");
+    utterance.onend = () => {
+      if (run !== narrationRun || state.index !== index) return;
+      els.speakButton.classList.remove("is-speaking");
+      advanceAfterNarration(index, run);
+    };
+    utterance.onerror = () => {
+      if (run === narrationRun) els.speakButton.classList.remove("is-speaking");
+    };
     window.speechSynthesis.speak(utterance);
   }
 
-  function advanceAfterNarration(index) {
-    if (!state.sound || state.index !== index || index >= PAGES.length - 1) return;
-    window.setTimeout(() => {
-      if (state.sound && state.index === index) go(1);
+  function advanceAfterNarration(index, run) {
+    if (!state.sound || state.index !== index || run !== narrationRun || index >= PAGES.length - 1) return;
+    window.clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = window.setTimeout(() => {
+      autoAdvanceTimer = 0;
+      if (state.sound && state.index === index && run === narrationRun) go(1, "auto");
     }, 450);
   }
 
@@ -205,22 +230,30 @@
     const folder = state.lang === "zh" ? "audio-hero-grandpa-zh" : "audio-hero-grandpa";
     const source = `${folder}/page-${String(index).padStart(2, "0")}.mp3`;
     const audio = new Audio(source);
+    const run = narrationRun;
+    activeNarrationAudios.add(audio);
     state.audio = audio;
     setMusicVolume();
     els.speakButton.classList.add("is-speaking");
     audio.onended = () => {
+      activeNarrationAudios.delete(audio);
+      if (run !== narrationRun || state.audio !== audio || state.index !== index) return;
       state.audio = null;
       els.speakButton.classList.remove("is-speaking");
       setMusicVolume();
-      advanceAfterNarration(index);
+      advanceAfterNarration(index, run);
     };
     audio.onerror = () => {
+      activeNarrationAudios.delete(audio);
+      if (run !== narrationRun || state.audio !== audio || state.index !== index) return;
       state.audio = null;
       els.speakButton.classList.remove("is-speaking");
       setMusicVolume();
       speakFallback(index);
     };
     audio.play().catch(() => {
+      activeNarrationAudios.delete(audio);
+      if (run !== narrationRun || state.audio !== audio || state.index !== index) return;
       state.audio = null;
       els.speakButton.classList.remove("is-speaking");
       setMusicVolume();
@@ -256,6 +289,7 @@
   }
 
   function render(index, silent = false) {
+    stopNarration();
     state.index = index;
     const page = PAGES[index];
     renderIllustration(index);
@@ -274,11 +308,15 @@
       dot.classList.toggle("done", i < index);
     });
     syncMusic(index);
-    if (isCover || silent) stopNarration();
-    else narrate(index);
+    if (!isCover && !silent) narrate(index);
   }
 
-  function go(delta) {
+  function go(delta, reason = "manual") {
+    if (reason === "manual") {
+      const now = window.performance.now();
+      if (now - lastManualNavigationAt < 360) return;
+      lastManualNavigationAt = now;
+    }
     const next = Math.min(PAGES.length - 1, Math.max(0, state.index + delta));
     if (next !== state.index) render(next);
   }
@@ -304,8 +342,14 @@
     state.started = true;
     render(1);
   });
-  els.prevButton.addEventListener("click", () => go(-1));
-  els.nextButton.addEventListener("click", () => go(1));
+  els.prevButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    go(-1, "manual");
+  });
+  els.nextButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    go(1, "manual");
+  });
   els.speakButton.addEventListener("click", () => narrate(state.index));
   els.languageButton.addEventListener("click", () => {
     state.lang = state.lang === "zh" ? "en" : "zh";
@@ -337,8 +381,9 @@
   els.tipsButton.addEventListener("click", () => { els.tipsOverlay.hidden = false; });
   els.tipsClose.addEventListener("click", () => { els.tipsOverlay.hidden = true; });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") go(1);
-    if (event.key === "ArrowLeft") go(-1);
+    if (event.repeat) return;
+    if (event.key === "ArrowRight") go(1, "manual");
+    if (event.key === "ArrowLeft") go(-1, "manual");
     if (event.key === "Escape") els.tipsOverlay.hidden = true;
   });
   window.addEventListener("pagehide", () => {

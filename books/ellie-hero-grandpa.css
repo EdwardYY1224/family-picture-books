@@ -28,6 +28,11 @@
 
 .audio-status[hidden] { display: none; }
 .pill-button[aria-pressed="false"] { background: rgba(255, 255, 255, .18); opacity: .78; }
+.nav-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
 @media (max-width: 760px) {
   .book-header { gap: 6px; padding-inline: 8px; }
