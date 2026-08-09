@@ -111,7 +111,7 @@
   let statusTimer = 0;
   let narrationRun = 0;
   let autoAdvanceTimer = 0;
-  let lastManualNavigationAt = 0;
+  let lastManualNavigationAt = Number.NEGATIVE_INFINITY;
   const activeNarrationAudios = new Set();
 
   function showAudioStatus(message) {
@@ -216,11 +216,13 @@
   }
 
   function advanceAfterNarration(index, run) {
-    if (!state.sound || state.index !== index || run !== narrationRun || index >= PAGES.length - 1) return;
+    const continuous = !window.PictureBookRuntime || window.PictureBookRuntime.isContinuous();
+    if (!continuous || !state.sound || state.index !== index || run !== narrationRun || index >= PAGES.length - 1) return;
     window.clearTimeout(autoAdvanceTimer);
     autoAdvanceTimer = window.setTimeout(() => {
       autoAdvanceTimer = 0;
-      if (state.sound && state.index === index && run === narrationRun) go(1, "auto");
+      const stillContinuous = !window.PictureBookRuntime || window.PictureBookRuntime.isContinuous();
+      if (stillContinuous && state.sound && state.index === index && run === narrationRun) go(1, "auto");
     }, 450);
   }
 
