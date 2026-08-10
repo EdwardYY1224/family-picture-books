@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Summer Camp English Adventure</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text y=%2252%22 font-size=%2252%22>☀</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__copy">
+      <a class="back-link" href="../index.html">← 英文課遊戲屋</a>
+      <p class="eyebrow">AUG 3–28 · 4-WEEK LISTENING COURSE</p>
+      <h1>Summer Camp<br><span>English Adventure</span></h1>
+      <p class="hero__lead">跟著英語朗讀，完成「聽、說、認字、造句」四步驟。</p>
+      <div class="hero__badges"><span>12 組練習</span><span>4 個主題</span><span>互動小測驗</span></div>
+    </div>
+    <div class="hero__art" aria-hidden="true">
+      <div class="sun"></div><div class="hill hill--one"></div><div class="hill hill--two"></div>
+      <div class="train">●━●</div><div class="spark spark--one">✦</div><div class="spark spark--two">✧</div>
+    </div>
+  </header>
+
+  <nav class="week-tabs" aria-label="選擇週次" id="weekTabs"></nav>
+
+  <main id="lesson" class="lesson" aria-live="polite"></main>
+
+  <footer>
+    <p>使用方式：先聽一次 → 跟讀單字 → 練句型 → 完成小測驗。</p>
+      <p>教材內容由課堂錄音整理；公開版使用裝置內建英文朗讀。</p>
+  </footer>
+
+  <template id="lessonTemplate">
+    <section class="week-hero">
+      <div><p class="week-kicker"></p><h2></h2><p class="week-subtitle"></p></div>
+      <div class="week-icon" aria-hidden="true"></div>
+    </section>
+    <section class="panel audio-panel"><div class="section-heading"><span>01</span><div><h3>Listen 聽一聽</h3><p>先不看文字聽一次，再打開學習提示。</p></div></div><div class="audio-list"></div></section>
+    <section class="panel"><div class="section-heading"><span>02</span><div><h3>Words 單字卡</h3><p>點卡片聽發音；先說英文，再翻面看中文。</p></div></div><div class="word-grid"></div></section>
+    <section class="panel"><div class="section-heading"><span>03</span><div><h3>Speak 句型任務</h3><p>按播放聽示範，替換有底線的部分再說一次。</p></div></div><div class="sentence-list"></div></section>
+    <section class="panel activity-panel"><div class="section-heading"><span>04</span><div><h3>Move & Make 動手做</h3><p>把英文用在動作、遊戲或小作品裡。</p></div></div><div class="activity"></div></section>
+    <section class="panel quiz-panel"><div class="section-heading"><span>05</span><div><h3>Quick Check 小測驗</h3><p>每題選一個答案，完成後查看分數。</p></div></div><form class="quiz"></form><button class="check-button" type="button">Check my answers</button><div class="score" role="status"></div></section>
+  </template>
+
+  <script src="course-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
