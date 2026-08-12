@@ -240,9 +240,18 @@
     const [column, row] = position;
     const span = document.createElement("span");
     span.className = `${className || "choice-visual"} sprite-art`;
-    span.style.backgroundImage = `url("${sheet.src}")`;
-    span.style.backgroundSize = `${sheet.cols * 100}% ${sheet.rows * 100}%`;
-    span.style.backgroundPosition = `${sheet.cols === 1 ? 0 : column / (sheet.cols - 1) * 100}% ${sheet.rows === 1 ? 0 : row / (sheet.rows - 1) * 100}%`;
+    const image = document.createElement("img");
+    image.className = "sprite-art__sheet";
+    image.src = sheet.src;
+    image.alt = "";
+    image.setAttribute("aria-hidden", "true");
+    image.draggable = false;
+    image.style.width = `${sheet.cols * 100}%`;
+    image.style.height = `${sheet.rows * 100}%`;
+    image.style.left = `${column * -100}%`;
+    image.style.top = `${row * -100}%`;
+    image.addEventListener("error", () => span.classList.add("is-image-missing"), { once: true });
+    span.append(image);
     return span;
   }
 
@@ -588,10 +597,10 @@
       const face = document.createElement("span");
       face.className = "memory-match-face";
       face.append(createVisual(item, "memory-match-art"));
-      const accessible = document.createElement("span");
-      accessible.className = "sr-only";
-      accessible.textContent = t(item.label);
-      face.append(accessible);
+      const name = document.createElement("span");
+      name.className = "memory-match-name";
+      name.textContent = t(item.label);
+      face.append(name);
       button.append(back, face);
       button.addEventListener("click", () => {
         if (locked || state.solved || button.classList.contains("is-open") || button.classList.contains("is-matched")) return;
