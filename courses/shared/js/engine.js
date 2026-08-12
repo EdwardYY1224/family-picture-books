@@ -466,11 +466,12 @@
     deck.forEach((step) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "sequence-card";
+      button.className = `sequence-card${part.memory ? " sequence-card--pictures" : ""}`;
       button.dataset.value = step.value;
-      button.append(createVisual(step, "icon-svg icon-svg--card"));
+      button.append(createVisual(step, part.memory ? "sequence-card-art" : "icon-svg icon-svg--card"));
       const text = document.createElement("b");
       text.textContent = t(step.label);
+      if (part.memory) text.className = "sr-only";
       button.append(text);
       button.addEventListener("click", () => {
         if (state.solved) return;
@@ -478,7 +479,7 @@
         const spokenLabel = t(step.label);
         if (!expected || step.value !== expected.value) { incorrect(button, spokenLabel); return; }
         const slot = slots.children[state.sequenceIndex];
-        slot.replaceChildren(createVisual(step, "icon-svg icon-svg--slot"));
+        slot.replaceChildren(createVisual(step, part.memory ? "sequence-slot-art" : "icon-svg icon-svg--slot"));
         slot.classList.add("filled");
         button.disabled = true;
         state.sequenceIndex += 1;
