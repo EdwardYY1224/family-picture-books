@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#234b47">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23e0ad42'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23234b47'/%3E%3C/svg%3E">
+  <title>5 歲小小探索家</title>
+  <link rel="stylesheet" href="age-5.css">
+</head>
+<body data-page="lesson">
+  <header class="lesson-topbar">
+    <a class="back-link" href="index.html">← <span data-i18n="allLessons">全部課程</span></a>
+    <div class="lesson-topbar__actions">
+      <button id="speakButton" class="quiet-button" type="button" data-i18n="listen">聽課程</button>
+      <button id="languageButton" class="language-button" type="button">English</button>
+    </div>
+  </header>
+
+  <main id="lessonRoot" class="lesson-shell" hidden>
+    <section class="lesson-intro">
+      <div>
+        <p id="lessonMeta" class="section-kicker"></p>
+        <h1 id="lessonTitle"></h1>
+        <p id="lessonMission" class="lesson-mission"></p>
+      </div>
+      <div class="lesson-mark" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="story-card">
+      <span class="step-number">01</span>
+      <div><p class="card-kicker" data-i18n="storyHook">故事開場</p><p id="lessonHook"></p></div>
+    </section>
+
+    <section class="two-column">
+      <article class="content-card">
+        <span class="step-number">02</span>
+        <p class="card-kicker" data-i18n="todayGoals">今天會學會</p>
+        <ul id="goalList" class="check-list"></ul>
+      </article>
+      <article class="content-card">
+        <span class="step-number">03</span>
+        <p class="card-kicker" data-i18n="wordBasket">詞彙籃子</p>
+        <dl id="vocabularyList" class="vocabulary-list"></dl>
+      </article>
+    </section>
+
+    <section class="activity-card">
+      <span class="step-number">04</span>
+      <div class="activity-card__heading"><div><p class="card-kicker" data-i18n="handsOn">動手探索</p><h2 id="activityTitle"></h2></div><span id="activityTime" class="time-pill"></span></div>
+      <p id="materials" class="materials"></p>
+      <ol id="activitySteps" class="activity-steps"></ol>
+    </section>
+
+    <section class="quiz-card">
+      <span class="step-number">05</span>
+      <p class="card-kicker" data-i18n="showWhatYouKnow">試試看</p>
+      <div id="quizRoot"></div>
+    </section>
+
+    <section class="caregiver-card">
+      <div><p class="card-kicker" data-i18n="caregiverCheck">家長觀察</p><p id="caregiverPrompt"></p></div>
+      <div><p class="card-kicker" data-i18n="tryMore">延伸挑戰</p><p id="extension"></p></div>
+    </section>
+
+    <div class="completion-panel">
+      <p id="completionMessage" data-i18n="finishMessage">完成探索後，記錄今天的進度。</p>
+      <button id="completeButton" class="primary-button" type="button" data-i18n="markComplete">標記為完成</button>
+    </div>
+  </main>
+
+  <section id="lessonUnavailable" class="unavailable" hidden>
+    <h1 data-i18n="notReadyTitle">這堂課正在製作中</h1>
+    <p data-i18n="notReadyBody">課程位置已經排好，完整內容會在下一批加入。</p>
+    <a class="primary-button" href="index.html" data-i18n="backToPlan">回課程表</a>
+  </section>
+
+  <script src="../data/age-5-curriculum.js?v=20260812-published"></script>
+  <script src="age-5.js"></script>
+</body>
+</html>
