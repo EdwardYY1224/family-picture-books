@@ -123,7 +123,9 @@
       browserSpeak(text, onEnd);
       return;
     }
-    const narration = new Audio(source);
+    const audioVersion = window.Age5NaturalAudioVersion;
+    const versionedSource = audioVersion ? `${source}${source.includes("?") ? "&" : "?"}v=${audioVersion}` : source;
+    const narration = new Audio(versionedSource);
     activeNarration = narration;
     narration.addEventListener("ended", () => {
       if (activeNarration === narration) activeNarration = null;

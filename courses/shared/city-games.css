@@ -146,7 +146,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid rgba(57,132,198,.35);
 .overlay-icon .icon-svg svg, .overlay-icon svg { width: 52px; height: 52px; }
 .overlay-icon.overlay-icon--cover { width: 100%; height: auto; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 22px 18px 24px 20px; transform: none; background: var(--cream); }
 .overlay-icon--cover img { width: 100%; height: 100%; display: block; object-fit: cover; }
-.sprite-art { position: relative; overflow: hidden; background-color: var(--cream); }
+.sprite-art { position: relative; display: block; overflow: hidden; background-color: var(--cream); }
 .sprite-art__sheet { position: absolute; display: block; max-width: none; object-fit: fill; pointer-events: none; user-select: none; }
 .sprite-art.is-image-missing::after { content: "✦"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--green-deep); background: var(--yellow); font-size: 30px; }
 .choice-visual.sprite-art { width: min(100%, 150px); height: 105px; min-width: 0; min-height: 0; margin: 0 auto; border-radius: 18px 16px 20px 15px; }
@@ -221,6 +221,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid rgba(57,132,198,.35);
 .memory-match-name { position: absolute; z-index: 3; left: 5px; right: 5px; bottom: 4px; padding: 2px 3px; border-radius: 8px; color: var(--green-deep); background: rgba(255,250,237,.88); font-size: 11px; font-weight: 800; line-height: 1.15; text-align: center; pointer-events: none; }
 .memory-list:has(.memory-item-art) { grid-template-columns: repeat(var(--memory-items, 5), minmax(0, 1fr)); gap: 8px; padding: 12px; }
 .memory-list:has(.memory-item-art) .memory-row { min-width: 0; padding: 0; border: 0; }
+.memory-list:has(.memory-item-art) .memory-icons { width: 100%; min-width: 0; flex-wrap: nowrap; }
 .memory-item-art.sprite-art { width: 100%; min-height: 92px; border-radius: 15px; }
 .visual-sequence { width: min(100%, 620px); display: grid; grid-template-columns: repeat(var(--sequence-count, 4), minmax(0, 1fr)); gap: 10px; }
 .visual-sequence__card { min-height: 128px; padding: 6px; border: 4px solid var(--green-deep); border-radius: 20px; background: #fff; opacity: .55; transition: transform .18s ease, opacity .18s ease, box-shadow .18s ease; }

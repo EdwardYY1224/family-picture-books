@@ -1,3 +1,4 @@
+window.Age5NaturalAudioVersion = "20260812-pronunciation-fix";
 window.Age5NaturalAudio = {
   "zh": {
     "先來暖身，慢慢玩。": "audio/natural/zh/age5-zh-001.mp3",
