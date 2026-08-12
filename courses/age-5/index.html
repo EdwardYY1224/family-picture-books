@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#234b47">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23e0ad42'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23234b47'/%3E%3C/svg%3E">
+  <title>5 歲小小探索家｜Little Explorers Age 5</title>
+  <link rel="stylesheet" href="age-5.css?v=20260811-warm-folk-art">
+</head>
+<body data-page="hub">
+  <header class="course-hero">
+    <nav class="topbar" aria-label="課程工具列">
+      <a class="back-link" href="../../index.html">← 回到學習花園</a>
+      <button id="languageButton" class="language-button" type="button">English</button>
+    </nav>
+    <div class="course-hero__content">
+      <p class="eyebrow" data-i18n="eyebrow">AGE FIVE · 20 WEEKS</p>
+      <h1 data-i18n="hubTitle">5 歲小小探索家</h1>
+      <p class="hero-lead" data-i18n="hubLead">40 堂短課，把英文、數學、科學、情緒、金錢、AI 與歷史變成可以動手玩的探索任務。</p>
+      <div class="hero-facts">
+        <span><b>20</b><small data-i18n="weeks">週</small></span>
+        <span><b>40</b><small data-i18n="lessons">堂課</small></span>
+        <span><b>12–18</b><small data-i18n="minutes">分鐘</small></span>
+      </div>
+    </div>
+    <div class="folk-orbit" aria-hidden="true">
+      <span class="folk-orbit__sun"></span>
+      <span class="folk-orbit__planet folk-orbit__planet--one"></span>
+      <span class="folk-orbit__planet folk-orbit__planet--two"></span>
+      <span class="folk-orbit__trail"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="progress-card" aria-labelledby="progressTitle">
+      <div>
+        <p class="section-kicker" data-i18n="progressKicker">YOUR JOURNEY</p>
+        <h2 id="progressTitle" data-i18n="progressTitle">探索進度</h2>
+      </div>
+      <div class="progress-copy"><strong id="progressText">0 / 40</strong><span data-i18n="completed">堂完成</span></div>
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+    </section>
+
+    <section class="ready-games" aria-labelledby="readyTitle">
+      <div class="section-heading">
+        <div><p class="section-kicker" data-i18n="readyKicker">LISTEN & PLAY</p><h2 id="readyTitle" data-i18n="readyTitle">聽一聽，動手玩</h2></div>
+        <p data-i18n="readyLead">孩子不需要識字。點選大圖，題目會自動念出來。</p>
+      </div>
+      <div id="readyGrid" class="ready-grid"></div>
+    </section>
+
+    <section class="ready-games memory-games" aria-labelledby="memoryTitle">
+      <div class="section-heading">
+        <div><p class="section-kicker" data-i18n="memoryKicker">BONUS MEMORY GAMES</p><h2 id="memoryTitle" data-i18n="memoryTitle">加碼記憶遊戲</h2></div>
+        <p data-i18n="memoryLead">四款短遊戲，練習看、聽、記住與依序操作。</p>
+      </div>
+      <div id="memoryGrid" class="ready-grid"></div>
+    </section>
+
+    <details class="parent-plan">
+      <summary data-i18n="parentPlan">家長：查看完整 20 週課程規劃</summary>
+    <section class="curriculum" aria-labelledby="curriculumTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker" data-i18n="curriculumKicker">THE CURRICULUM</p>
+          <h2 id="curriculumTitle" data-i18n="curriculumTitle">一步一步探索</h2>
+        </div>
+        <label class="filter-label"><span data-i18n="filterLabel">學習領域</span><select id="domainFilter"></select></label>
+      </div>
+      <div id="weekGrid" class="week-grid"></div>
+    </section>
+    </details>
+  </main>
+
+  <footer>
+    <p>Marble Skill Taxonomy (v1) · ODbL 1.0 / CC BY-SA 4.0</p>
+    <a href="../../README.md" data-i18n="attribution">網站說明與隱私規則</a>
+  </footer>
+
+  <script src="../data/age-5-curriculum.js?v=20260812-published"></script>
+  <script src="../shared/js/icons.js?v=20260812-published"></script>
+  <script src="age-5.js?v=20260812-memory-four"></script>
+</body>
+</html>
