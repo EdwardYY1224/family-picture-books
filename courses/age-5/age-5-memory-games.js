@@ -48,9 +48,10 @@
   const missingLookup = Object.fromEntries(items(missingItems).map((entry) => [entry.value, entry]));
   function missingRound(showKeys, answer, distractors, promptZh, promptEn, stage) {
     const answerItem = missingLookup[answer];
+    const remaining = showKeys.filter((key) => key !== answer).map((key) => missingLookup[key]);
     return { stage, parts: [
       { type:"watch", prompt:bi(promptZh,promptEn), hint:bi("慢慢看每一張圖。","Look slowly at every picture."), reveal:showKeys.map((key)=>missingLookup[key]), hideLabels:true },
-      { type:"choice", prompt:bi("哪一個不見了？","Which one is missing?"), hint:bi("想想剛才看見了哪些圖。","Think about the pictures you just saw."), confirm:bi(`對了，是${answerItem.label.zh}！`,`Yes, it was the ${answerItem.label.en}!`), choices:[answerItem,...distractors.map((key)=>missingLookup[key])], answer },
+      { type:"choice", prompt:bi("哪一個不見了？","Which one is missing?"), hint:bi("看看留下來的圖片，再想想剛才還看見了誰。","Look at the pictures that remain, then remember who else you saw."), confirm:bi(`對了，是${answerItem.label.zh}！`,`Yes, it was the ${answerItem.label.en}!`), remaining, choices:[answerItem,...distractors.map((key)=>missingLookup[key])], answer },
     ] };
   }
   window.KidGameData["age5-whats-missing"] = {
@@ -60,12 +61,12 @@
     title:bi("神祕消失箱","The Mystery Missing Box"),
     description:bi("先記住大圖，布幕後面會有一個朋友悄悄消失。","Remember the big pictures, then discover which friend disappeared."),
     rounds:[
-      missingRound(["apple","banana","strawberry"],"banana",["apple","flower"],"記住蘋果、香蕉和草莓。","Remember the apple, banana, and strawberry.",0),
-      missingRound(["trex","triceratops","egg"],"egg",["trex","rocket"],"記住暴龍、三角龍和恐龍蛋。","Remember the Tyrannosaurus, Triceratops, and dinosaur egg.",0),
-      missingRound(["butterfly","ant","spider","snail"],"spider",["ant","butterfly"],"記住四個小生物。","Remember the four minibeasts.",1),
-      missingRound(["sun","moon","earth","rocket"],"earth",["moon","rocket"],"記住太陽、月亮、地球和火箭。","Remember the Sun, Moon, Earth, and rocket.",1),
-      missingRound(["eye","ear","nose","tongue","hands"],"nose",["ear","hands"],"記住眼睛、耳朵、鼻子、舌頭和雙手。","Remember the eyes, ears, nose, tongue, and hands.",2),
-      missingRound(["flower","egg","moon","apple","butterfly"],"flower",["apple","moon"],"記住這五張綜合圖卡。","Remember these five mixed picture cards.",2),
+      missingRound(["apple","banana","strawberry"],"banana",["flower","moon"],"記住蘋果、香蕉和草莓。","Remember the apple, banana, and strawberry.",0),
+      missingRound(["trex","triceratops","egg"],"egg",["rocket","apple"],"記住暴龍、三角龍和恐龍蛋。","Remember the Tyrannosaurus, Triceratops, and dinosaur egg.",0),
+      missingRound(["butterfly","ant","spider","snail"],"spider",["egg","moon"],"記住四個小生物。","Remember the four minibeasts.",1),
+      missingRound(["sun","moon","earth","rocket"],"earth",["butterfly","apple"],"記住太陽、月亮、地球和火箭。","Remember the Sun, Moon, Earth, and rocket.",1),
+      missingRound(["eye","ear","nose","tongue","hands"],"nose",["flower","rocket"],"記住眼睛、耳朵、鼻子、舌頭和雙手。","Remember the eyes, ears, nose, tongue, and hands.",2),
+      missingRound(["flower","egg","moon","apple","butterfly"],"flower",["trex","hands"],"記住這五張綜合圖卡。","Remember these five mixed picture cards.",2),
     ],
   };
 

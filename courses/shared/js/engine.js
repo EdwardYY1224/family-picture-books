@@ -54,6 +54,7 @@
     sequenceIndex: 0,
     selected: new Set(),
     watchPlayed: false,
+    renderToken: 0,
     praiseIndex: 0,
     sound: storage.get(SOUND_KEY) !== "off",
     audioContext: null,
@@ -309,6 +310,18 @@
 
   /* ---------- part renderers ---------- */
   function renderChoice(part) {
+    if (part.remaining?.length) {
+      const remainingPanel = document.createElement("div");
+      remainingPanel.className = "missing-remaining";
+      remainingPanel.setAttribute("aria-label", i18n.lang === "en" ? "Pictures still here" : "還在這裡的圖片");
+      part.remaining.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "missing-remaining__card";
+        card.append(createVisual(item, "missing-remaining__art"));
+        remainingPanel.append(card);
+      });
+      elements.roundContent.append(remainingPanel);
+    }
     const grid = document.createElement("div");
     grid.className = "choice-grid";
     if (part.choices.length === 2) grid.classList.add("choice-grid--two");
@@ -644,6 +657,7 @@
   }
 
   function renderPart() {
+    const renderToken = ++state.renderToken;
     const round = currentRound();
     const part = currentPart();
     state.solved = false;
@@ -670,9 +684,14 @@
     if (part.type === "memoryMatch") renderMemoryMatch(part);
 
     window.setTimeout(() => {
+      if (state.renderToken !== renderToken) return;
       speak(t(part.prompt));
-      if (part.sound) window.setTimeout(() => playEffect(part.sound), 900);
-      if (part.audio) window.setTimeout(() => playMemoryAudio(part.audio), part.audioDelay || 3600);
+      if (part.sound) window.setTimeout(() => {
+        if (state.renderToken === renderToken) playEffect(part.sound);
+      }, 900);
+      if (part.audio) window.setTimeout(() => {
+        if (state.renderToken === renderToken) playMemoryAudio(part.audio);
+      }, part.audioDelay || 3600);
     }, 160);
   }
 
@@ -688,6 +707,8 @@
   }
 
   function showStageIntro(stage) {
+    state.renderToken += 1;
+    stopSpeech();
     elements.stageKicker.textContent = `${stage + 1} / 3`;
     elements.stageTitle.textContent = ui.stageNames[stage];
     elements.stageText.textContent = ui.stageIntro[stage];
@@ -734,6 +755,8 @@
 
   function partCorrect(quiet, spokenLabel = "") {
     if (state.solved) return;
+    state.renderToken += 1;
+    stopSpeech();
     state.solved = true;
     const round = currentRound();
     const part = currentPart();
