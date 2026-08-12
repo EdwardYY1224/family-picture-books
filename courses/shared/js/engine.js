@@ -97,8 +97,8 @@
     });
   }
 
-  function browserSpeak(text) {
-    if (!("speechSynthesis" in window)) return;
+  function browserSpeak(text, onEnd) {
+    if (!("speechSynthesis" in window)) { onEnd?.(); return; }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = ui.speechLang;
@@ -110,31 +110,39 @@
     utterance.voice = voices.find((voice) => voice.lang.toLowerCase().replace("_", "-") === wanted)
       || voices.find((voice) => voice.lang.toLowerCase().startsWith(prefix))
       || null;
+    utterance.addEventListener("end", () => onEnd?.(), { once: true });
+    utterance.addEventListener("error", () => onEnd?.(), { once: true });
     window.speechSynthesis.speak(utterance);
   }
 
-  function speak(text) {
-    if (!state.sound || !text) return;
+  function speak(text, onEnd) {
+    if (!state.sound || !text) { onEnd?.(); return; }
     stopSpeech();
     const source = window.Age5NaturalAudio?.[i18n.lang]?.[text];
     if (!source) {
-      browserSpeak(text);
+      browserSpeak(text, onEnd);
       return;
     }
     const narration = new Audio(source);
     activeNarration = narration;
     narration.addEventListener("ended", () => {
       if (activeNarration === narration) activeNarration = null;
+      onEnd?.();
     }, { once: true });
     narration.play().catch(() => {
       if (activeNarration === narration) activeNarration = null;
-      browserSpeak(text);
+      browserSpeak(text, onEnd);
     });
   }
 
-  function labelThen(label, message) {
-    const separator = i18n.lang === "en" ? ". " : "。";
-    return label ? `${label}${separator}${message}` : message;
+  function speakSequence(lines, onEnd) {
+    const queue = lines.filter(Boolean);
+    const next = () => {
+      const line = queue.shift();
+      if (!line) { onEnd?.(); return; }
+      speak(line, next);
+    };
+    next();
   }
 
   function audioContext() {
@@ -454,7 +462,7 @@
         if (state.sequenceIndex === part.steps.length) partCorrect(false, spokenLabel);
         else {
           elements.stageGuide.textContent = ui.sequenceNext(state.sequenceIndex + 1);
-          if (!part.quietSteps) speak(spokenLabel);
+          speak(spokenLabel);
         }
       });
       cards.append(button);
@@ -590,7 +598,7 @@
         button.classList.add("is-open");
         playTone(480, .1, "sine", 0);
         openCards.push({ button, item });
-        if (openCards.length < 2) return;
+        if (openCards.length < 2) { speak(t(item.label)); return; }
         locked = true;
         const [first, second] = openCards;
         if (first.item.value === second.item.value) {
@@ -601,9 +609,11 @@
             locked = false;
             matchedPairs += 1;
             playTone(720, .18, "sine", 0);
-            if (matchedPairs === part.cards.length) partCorrect(false);
+            if (matchedPairs === part.cards.length) partCorrect(false, t(item.label));
+            else speak(t(item.label));
           }, 420);
         } else {
+          speak(t(item.label));
           window.setTimeout(() => {
             first.button.classList.remove("is-open");
             second.button.classList.remove("is-open");
@@ -684,8 +694,9 @@
       element.classList.add("is-wrong");
       window.setTimeout(() => element.classList.remove("is-wrong"), 330);
     }
-    speak(ui.tryAgain);
-    if (state.attempts >= 2) window.setTimeout(showHint, spokenLabel ? 1500 : 460);
+    speakSequence([spokenLabel, ui.tryAgain], () => {
+      if (state.attempts >= 2) window.setTimeout(showHint, 280);
+    });
   }
 
   function showHint() {
@@ -722,12 +733,16 @@
       if (!quiet) {
         playEffect("success");
         elements.stageGuide.textContent = part.confirm ? t(part.confirm) : ui.partDone;
-        speak(ui.partDone);
+        speakSequence([spokenLabel, ui.partDone], () => {
+          state.partIndex += 1;
+          renderPart();
+        });
+        return;
       }
       window.setTimeout(() => {
         state.partIndex += 1;
         renderPart();
-      }, quiet ? 250 : 1500);
+      }, 250);
       return;
     }
 
@@ -742,7 +757,7 @@
     elements.feedbackPanel.hidden = false;
     updateDots();
     saveResume(state.roundIndex + 1);
-    speak(praise());
+    speakSequence([spokenLabel, praise()]);
   }
 
   /* ---------- resume & progress ---------- */
