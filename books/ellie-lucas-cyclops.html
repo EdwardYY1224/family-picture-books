@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#244f49">
+  <link rel="icon" href="data:,">
+  <meta name="description" content="Ellie 和弟弟 Lucas 用冷靜、觀察與合作智取獨眼巨人波呂斐摩斯的雙語冒險繪本。">
+  <title>Ellie、Lucas 與獨眼巨人的洞穴</title>
+  <link rel="stylesheet" href="elsa-goodnight.css?v=20260812-1">
+  <link rel="stylesheet" href="ellie-lucas-cyclops.css?v=20260812-2">
+</head>
+<body>
+  <header class="book-header">
+    <a class="pill-button" href="../index.html" aria-label="回到繪本首頁">← <i>繪本首頁</i></a>
+    <div class="book-brand">
+      <b id="brandTitle">Ellie、Lucas 與獨眼巨人的洞穴</b>
+      <small id="brandSubtitle">一場關於勇氣、觀察與合作的神話冒險</small>
+    </div>
+    <div class="book-tools">
+      <button class="pill-button" id="languageButton" type="button" aria-label="Switch to English">EN</button>
+      <button class="pill-button" id="tipsButton" type="button">💡 <i>共讀提示</i></button>
+      <button class="pill-button" id="soundButton" type="button" aria-pressed="true">🔊 <i>有聲音</i></button>
+    </div>
+  </header>
+
+  <main class="book-shell">
+    <section class="book-page">
+      <div class="illustration" id="illustration" aria-hidden="true"></div>
+      <div class="cover-overlay" id="coverOverlay">
+        <p class="cover-kicker" id="coverKicker">A GENTLE ODYSSEY ADVENTURE</p>
+        <h1 id="coverTitle">Ellie、Lucas 與<br>獨眼巨人的洞穴</h1>
+        <p class="cover-sub" id="coverSubtitle">兩個小小探險家，如何打敗力大無窮的巨人？</p>
+        <button class="start-button" id="startButton" type="button">開始冒險 →</button>
+      </div>
+      <div class="text-band" id="textBand" hidden>
+        <button class="speak-button" id="speakButton" type="button" aria-label="朗讀這一頁">🔊</button>
+        <div class="story-copy">
+          <p class="story-en" id="storyZh"></p>
+          <p class="story-zh" id="storyEn"></p>
+        </div>
+        <div class="page-nav">
+          <button class="nav-button" id="prevButton" type="button" aria-label="上一頁">←</button>
+          <span class="page-count" id="pageCount">1</span>
+          <button class="nav-button" id="nextButton" type="button" aria-label="下一頁">→</button>
+        </div>
+      </div>
+    </section>
+    <div class="page-dots" id="pageDots" aria-hidden="true"></div>
+  </main>
+
+  <div class="tips-overlay" id="tipsOverlay" hidden>
+    <div class="tips-card">
+      <h2 id="tipsTitle">和 Ellie、Lucas 一起想一想</h2>
+      <ul id="tipsZh">
+        <li><b>原典連結：</b>「沒有人」和藏在羊群下逃走，都改編自荷馬《奧德賽》中奧德修斯智取波呂斐摩斯的情節。</li>
+        <li><b>姐弟合作：</b>Lucas 發現繩子與羊群規律；Ellie 組織計畫。問孩子：「如果少了一個人，他們還能成功嗎？」</li>
+        <li><b>真正的勇敢：</b>Ellie 也會害怕。她先安定自己和弟弟，才開始觀察與思考。</li>
+        <li><b>勝利的方法：</b>比較巨人的力量與孩子的智慧，討論為什麼力氣大不代表一定會贏。</li>
+        <li><b>幻想安全：</b>羊毛繩和躲在羊下是神話幻想。現實生活中不綁住別人、不鑽到動物身下；遇到危險要找可信任的大人。</li>
+      </ul>
+      <ul id="tipsEn" hidden>
+        <li><b>Myth connection:</b> The name “Nobody” and the escape beneath the sheep come from Odysseus's encounter with Polyphemus.</li>
+        <li><b>Teamwork:</b> Lucas spots the clues, while Ellie organizes the plan. Could either child succeed alone?</li>
+        <li><b>Real courage:</b> Ellie feels afraid, calms herself and Lucas, and only then begins to think.</li>
+        <li><b>Different strengths:</b> Compare the giant's strength with the children's observation and cleverness.</li>
+        <li><b>Fantasy safety:</b> The wool rope and sheep escape are make-believe. Never tie people up or crawl beneath real animals; find a trusted adult when danger is real.</li>
+      </ul>
+      <button class="start-button" id="tipsClose" type="button">回到故事</button>
+    </div>
+  </div>
+
+  <script src="picture-book-runtime.js?v=20260809-4"></script>
+  <script src="ellie-lucas-cyclops.js?v=20260812-2"></script>
+</body>
+</html>
