@@ -1,0 +1,4 @@
+#coverOverlay { background: linear-gradient(90deg, rgba(22,59,57,.76), rgba(22,59,57,.18) 59%, rgba(22,59,57,.12)); }
+#coverTitle { max-width: 790px; font-size: clamp(35px, 5.8vw, 68px); }
+#tipsZh[hidden], #tipsEn[hidden] { display: none; }
+@media (max-width: 640px) { #coverTitle { font-size: clamp(30px, 8.7vw, 43px); } #coverSubtitle { max-width: 315px; } }
